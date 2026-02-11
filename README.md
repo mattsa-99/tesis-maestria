@@ -167,8 +167,7 @@ pip install -e .
 La tesis se documenta en formato Markdown en `docs/capitulos/`:
 - [01 - Introducción](docs/capitulos/01%20-%20introduccion.md)
 - [02 - Marco Teórico](docs/capitulos/02%20-%20marco-teorico.md)
-
-Bitácora semanal en `docs/bitacora/`
+- Bitácora semanal en `docs/bitacora/`
 
 ---
 
