@@ -1,0 +1,61 @@
+# Core dependencies for financial fraud detection using graphs and topology
+# Python version: 3.9+
+
+# Data manipulation
+numpy>=1.24.0
+pandas>=2.0.0
+scipy>=1.10.0
+
+# Graph analysis
+networkx>=3.0
+igraph>=0.11.0
+graph-tool>=2.45; sys_platform != 'win32'  # Optional: powerful but Linux/Mac only
+
+# Machine learning and anomaly detection
+scikit-learn>=1.3.0
+pyod>=1.1.0  # Python Outlier Detection
+isolation-forest>=0.1.0
+
+# Topology and persistent homology
+gudhi>=3.8.0  # Geometric Understanding in Higher Dimensions
+giotto-tda>=0.6.0  # Topological data analysis
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+plotly>=5.14.0
+networkx-viewer>=0.3.0
+pyvis>=0.3.0  # Interactive network visualizations
+
+# Jupyter and notebooks
+jupyterlab>=4.0.0
+ipywidgets>=8.0.0
+notebook>=7.0.0
+
+# Data generation and synthetic data
+faker>=18.0.0
+imbalanced-learn>=0.11.0
+
+# Statistical analysis
+statsmodels>=0.14.0
+powerlaw>=1.5
+
+# Utilities
+tqdm>=4.65.0
+python-dotenv>=1.0.0
+pyyaml>=6.0
+
+# Testing
+pytest>=7.3.0
+pytest-cov>=4.1.0
+pytest-mock>=3.11.0
+
+# Code quality
+black>=23.3.0
+flake8>=6.0.0
+mypy>=1.3.0
+isort>=5.12.0
+
+# Documentation
+sphinx>=7.0.0
+sphinx-rtd-theme>=1.2.0
