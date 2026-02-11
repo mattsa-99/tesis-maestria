@@ -12,7 +12,7 @@ Desarrollar un sistema de detección de fraude financiero que aproveche las prop
 
 ---
 
-## 📊 Datos y Experimentación
+##  Datos y Experimentación
 
 ### Fuente de Datos
 - **Dataset**: [PaySim](https://www.kaggle.com/datasets/ealaxi/paysim1) - Simulador de transacciones financieras móviles
@@ -42,7 +42,7 @@ Desarrollar un sistema de detección de fraude financiero que aproveche las prop
 
 ---
 
-## 🎯 Baseline y Métricas
+## Baseline y Métricas
 
 ### Modelo Baseline
 - **Algoritmo**: Random Forest con features transaccionales básicas (sin topología)
@@ -69,7 +69,7 @@ Desarrollar un sistema de detección de fraude financiero que aproveche las prop
 
 ---
 
-## 🗺️ Metodología
+##  Metodología
 
 1. **Construcción de Grafos Dirigidos**: Representar transacciones financieras como grafos dirigidos donde:
    - Los nodos representan cuentas/entidades
@@ -89,7 +89,7 @@ Desarrollar un sistema de detección de fraude financiero que aproveche las prop
 
 ---
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
 tesis-maestria/
@@ -114,7 +114,7 @@ tesis-maestria/
 
 ---
 
-## 🛠️ Tecnologías Utilizadas
+##  Tecnologías Utilizadas
 
 - **Python 3.9+**: Lenguaje principal
 - **NetworkX**: Construcción y análisis de grafos
@@ -126,7 +126,7 @@ tesis-maestria/
 
 ---
 
-## 🚀 Instalación
+##  Instalación
 
 ```bash
 # Clonar el repositorio
@@ -146,7 +146,7 @@ pip install -e .
 
 ---
 
-## 📈 Roadmap
+##  Roadmap
 
 - [x] Configuración inicial del proyecto
 - [x] Definición de fuente de datos (PaySim)
@@ -162,7 +162,7 @@ pip install -e .
 
 ---
 
-## 📚 Documentación de Tesis
+##  Documentación de Tesis
 
 La tesis se documenta en formato Markdown en `docs/capitulos/`:
 - [01 - Introducción](docs/capitulos/01%20-%20introduccion.md)
@@ -172,7 +172,7 @@ Bitácora semanal en `docs/bitacora/`
 
 ---
 
-## 📄 Licencia
+##  Licencia
 
 Este proyecto es de uso académico. Todos los derechos reservados.
 
