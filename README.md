@@ -10,7 +10,66 @@ Este repositorio contiene el código fuente, análisis y documentación para la 
 
 Desarrollar un sistema de detección de fraude financiero que aproveche las propiedades topológicas de grafos dirigidos para identificar patrones anómalos en redes de transacciones.
 
-### Metodología
+---
+
+## 📊 Datos y Experimentación
+
+### Fuente de Datos
+- **Dataset**: [PaySim](https://www.kaggle.com/datasets/ealaxi/paysim1) - Simulador de transacciones financieras móviles
+- **Tamaño**: ~6.3M transacciones
+- **Período**: 30 días de transacciones sintéticas basadas en datos reales
+- **Tipos de transacción**: CASH_OUT, PAYMENT, CASH_IN, TRANSFER, DEBIT
+
+### Variable Objetivo
+- **Variable (y)**: `isFraud` (binaria)
+  - `0`: Transacción legítima
+  - `1`: Transacción fraudulenta
+- **Desbalance de clases**: ~0.13% fraude (clase minoritaria)
+
+### Features Principales
+1. **Features transaccionales**:
+   - Monto de transacción
+   - Tipo de transacción
+   - Balance antes/después
+   - Diferencia temporal
+
+2. **Features topológicas (extraídas del grafo)**:
+   - Degree centrality (in/out)
+   - Betweenness centrality
+   - PageRank
+   - Clustering coefficient
+   - Pertenencia a comunidades
+
+---
+
+## 🎯 Baseline y Métricas
+
+### Modelo Baseline
+- **Algoritmo**: Random Forest con features transaccionales básicas (sin topología)
+- **Features baseline**: monto, tipo, balance, tiempo
+- **Objetivo**: Establecer desempeño mínimo antes de agregar información topológica
+
+### Métrica Principal
+- **F1-Score**: Métrica principal debido al alto desbalance de clases
+  - Balance entre Precision y Recall
+  - Crítico para detectar fraudes (clase minoritaria)
+
+### Métricas Secundarias
+- **Precision**: Qué proporción de alertas son fraudes reales
+- **Recall**: Qué proporción de fraudes son detectados
+- **AUC-ROC**: Capacidad de discriminación del modelo
+- **Confusion Matrix**: Análisis detallado de FP/FN
+
+### Validación
+- **Estrategia**: Split temporal (80/20)
+  - Train: Primeros 24 días
+  - Test: Últimos 6 días
+- **Justificación**: Simula deployment real (predecir fraudes futuros)
+- **Cross-validation**: Estratificado por clase en conjunto de entrenamiento
+
+---
+
+## 🗺️ Metodología
 
 1. **Construcción de Grafos Dirigidos**: Representar transacciones financieras como grafos dirigidos donde:
    - Los nodos representan cuentas/entidades
@@ -28,7 +87,9 @@ Desarrollar un sistema de detección de fraude financiero que aproveche las prop
    - Estructuras sospechosas de red
    - Comportamientos atípicos en series temporales
 
-### Estructura del Proyecto
+---
+
+## 📁 Estructura del Proyecto
 
 ```
 tesis-maestria/
@@ -45,11 +106,15 @@ tesis-maestria/
 ├── notebooks/         # Jupyter notebooks para análisis exploratorio
 ├── tests/            # Tests unitarios
 ├── docs/             # Documentación adicional
+│   ├── capitulos/    # Capítulos de la tesis
+│   └── bitacora/     # Bitácora semanal
 ├── results/          # Resultados de experimentos
 └── config/           # Archivos de configuración
 ```
 
-### Tecnologías Utilizadas
+---
+
+## 🛠️ Tecnologías Utilizadas
 
 - **Python 3.9+**: Lenguaje principal
 - **NetworkX**: Construcción y análisis de grafos
@@ -59,7 +124,9 @@ tesis-maestria/
 - **jupyterlab**: Análisis exploratorio
 - **pytest**: Testing
 
-### Instalación
+---
+
+## 🚀 Instalación
 
 ```bash
 # Clonar el repositorio
@@ -77,44 +144,38 @@ pip install -r requirements.txt
 pip install -e .
 ```
 
-### Uso
+---
 
-```python
-# Ejemplo básico de uso
-from src.graph_construction import TransactionGraph
-from src.anomaly_detection import AnomalyDetector
-
-# Construir grafo desde datos de transacciones
-graph = TransactionGraph()
-graph.load_data('data/processed/transactions.csv')
-graph.build()
-
-# Detectar anomalías
-detector = AnomalyDetector(graph)
-anomalies = detector.detect()
-```
-
-### Roadmap
+## 📈 Roadmap
 
 - [x] Configuración inicial del proyecto
+- [x] Definición de fuente de datos (PaySim)
+- [x] Definición de baseline y métricas
+- [ ] Descarga y exploración de datos
 - [ ] Implementación de procesamiento de datos
 - [ ] Construcción de grafos dirigidos
-- [ ] Métricas topológicas
-- [ ] Algoritmos de detección de anomalías
+- [ ] Extracción de métricas topológicas
+- [ ] Implementación del baseline
+- [ ] Algoritmos de detección con features topológicas
 - [ ] Validación experimental
 - [ ] Documentación de tesis
 
-### Contribuciones
+---
 
-Este es un proyecto académico personal para tesis de maestría. Sin embargo, sugerencias y comentarios son bienvenidos.
+## 📚 Documentación de Tesis
 
-### Licencia
+La tesis se documenta en formato Markdown en `docs/capitulos/`:
+- [01 - Introducción](docs/capitulos/01%20-%20introduccion.md)
+- [02 - Marco Teórico](docs/capitulos/02%20-%20marco-teorico.md)
+
+Bitácora semanal en `docs/bitacora/`
+
+---
+
+## 📄 Licencia
 
 Este proyecto es de uso académico. Todos los derechos reservados.
 
-### Contacto
-
-Para preguntas o colaboraciones, favor contactar al autor del proyecto.
-
 ---
-*Última actualización: Febrero 2026*
+
+*Última actualización: 11 de febrero de 2026*
