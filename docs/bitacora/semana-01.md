@@ -1,6 +1,6 @@
 # Bitácora Semana 1
 **Fecha**: 11 de febrero de 2026
-**Autor**: Matías Sánchez
+**Autor**: Mateo Soto Arango
 
 ## Resumen Semanal
 
