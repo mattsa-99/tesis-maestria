@@ -82,7 +82,6 @@ python experiments/make_figures.py            # figuras
 ## Pendiente
 
 - [ ] Verificar contra la fuente las referencias marcadas en `bibliografia.bib`
-- [ ] Fijar en el Anexo C el *commit* de la versión final
 - [ ] Revisión con el director
 
 ## Licencia

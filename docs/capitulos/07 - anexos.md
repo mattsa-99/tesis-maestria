@@ -88,7 +88,7 @@
 
 ## Anexo C. Código y reproducibilidad
 
-El código, las pruebas y los resultados de esta tesis están en el repositorio público <https://github.com/mattsa-99/tesis-maestria>. **Versión del código usada para los resultados:** *commit* `[pendiente]` (fijar al publicar la versión final).
+El código, las pruebas y los resultados de esta tesis están en el repositorio público <https://github.com/mattsa-99/tesis-maestria>. **Versión del código usada para los resultados:** *commit* `39835fc` (`39835fc8b31d1850592ab5aabec1dcc34bbe2bd0`), disponible en <https://github.com/mattsa-99/tesis-maestria/tree/39835fc8b31d1850592ab5aabec1dcc34bbe2bd0>.
 
 ### C.1 Entorno
 
