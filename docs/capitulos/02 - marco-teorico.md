@@ -10,9 +10,9 @@ Para hacer concretas las definiciones, todas se ilustran sobre **una misma red d
 
 ### 2.1.1 Grafos dirigidos y multigrafos
 
-**Definición 2.1 (grafo dirigido).** Un *grafo dirigido* es un par $`G = (V, E)`$, donde $`V`$ es un conjunto finito de *nodos* y $`E \subseteq V \times V`$ un conjunto de *aristas*. Cada arista es un par ordenado $`(u, v)`$, que se escribe $`u \to v`$; $`u`$ es su *origen* y $`v`$ su *destino*. Una arista $`(v, v)`$ se llama *lazo*. Un grafo dirigido es *simple* si no tiene lazos.
+**Definición 2.1 (grafo dirigido).** Un *grafo dirigido* es un par $`G = (V, E)`$, donde $`V`$ es un conjunto finito de *nodos* y $`E \subseteq V \times V`$ un conjunto de *aristas*. Cada arista es un par ordenado $`(u, v)`$, que se escribe $`u \to v`$; $`u`$ es su *origen* y $`v`$ su *destino*. Una arista $`(v, v)`$ se llama *lazo*. Un grafo dirigido es *simple* si no tiene lazos (Bang-Jensen y Gutin, 2009).
 
-**Definición 2.2 (multigrafo dirigido ponderado).** Un *multigrafo dirigido ponderado* es una terna $`G = (V, E, w)`$, donde $`E`$ es un multiconjunto finito de pares ordenados de $`V \times V`$ y $`w : E \to \mathbb{R}_{\gt 0}`$ asigna un peso a cada arista. La *multiplicidad* $`m(u, v)`$ es el número de aristas $`u \to v`$ en $`E`$.
+**Definición 2.2 (multigrafo dirigido ponderado).** Un *multigrafo dirigido ponderado* es una terna $`G = (V, E, w)`$, donde $`E`$ es un multiconjunto finito de pares ordenados de $`V \times V`$ y $`w : E \to \mathbb{R}_{\gt 0}`$ asigna un peso a cada arista. La *multiplicidad* $`m(u, v)`$ es el número de aristas $`u \to v`$ en $`E`$ (Bang-Jensen y Gutin, 2009; Newman, 2010).
 
 **Definición 2.3 (grafo temporal de transacciones).** Un *grafo temporal de transacciones* es un par $`\mathcal{G} = (V, \mathcal{E})`$, donde $`\mathcal{E}`$ es una sucesión finita de transacciones $`e_i = (u_i, v_i, t_i, w_i)`$, $`i = 1, \dots, N`$, con origen $`u_i \in V`$, destino $`v_i \in V`$, instante $`t_i \in \mathbb{R}`$ y monto $`w_i \gt  0`$ (Holme y Saramäki, 2012). Se define el **orden de las transacciones** $`e_j \prec e_i`$ si $`t_j \lt  t_i`$, o si $`t_j = t_i`$ y $`j \lt  i`$. Así, $`\prec`$ es un orden total que refleja la secuencia en que se registran las transacciones.
 
@@ -28,7 +28,7 @@ Para hacer concretas las definiciones, todas se ilustran sobre **una misma red d
 G_{<\tau} = \big(V,\ \{\!\{(u_j, v_j) : t_j < \tau\}\!\},\ w\big),
 ```
 
-formado por todas las transacciones anteriores a $`\tau`$. Su *versión simple* $`\bar{G}_{\lt \tau} = (V, \bar{E}_{\lt \tau})`$ conserva una sola arista por par y elimina los lazos:
+formado por todas las transacciones anteriores a $`\tau`$ (adaptada de la noción de red temporal de Holme y Saramäki, 2012). Su *versión simple* $`\bar{G}_{\lt \tau} = (V, \bar{E}_{\lt \tau})`$ conserva una sola arista por par y elimina los lazos:
 
 ```math
 \bar{E}_{<\tau} = \{(u, v) : u \neq v,\ \exists j,\ (u_j, v_j) = (u, v),\ t_j < \tau\}.
@@ -50,7 +50,7 @@ f(e) = \varphi\big(e,\ \mathcal{H}_{\prec e}\big),
 
 es decir, si su valor depende solo de la propia transacción y de las anteriores. En particular, una variable calculada sobre una instantánea $`G_{\lt \tau}`$ con $`\tau \le t_e`$ es causal.
 
-La causalidad es el requisito que evita la fuga de información (2.4.2). Una métrica calculada sobre el grafo completo $`G_{\lt \infty}`$ no es causal, porque incorpora transacciones posteriores a $`e`$.
+La causalidad es el requisito que evita la fuga de información (2.4.2; Kaufman et al., 2012). La formalización como Definición 2.5 es propia de esta tesis. Una métrica calculada sobre el grafo completo $`G_{\lt \infty}`$ no es causal, porque incorpora transacciones posteriores a $`e`$.
 
 **Ejemplo 2.3 (fuga de información en un grafo).** Supóngase que se quiere marcar las transacciones de las cuentas que pertenecen a un ciclo. Si la pertenencia se calcula sobre el grafo completo $`G_{\lt \infty}`$, la transacción $`e_4 = (D, E, 5, 900)`$ queda marcada, aunque en $`t = 5`$ ese ciclo no existía: se completa con $`e_7`$, tres horas después. Calculada sobre $`G_{\lt 5}`$, que solo contiene $`e_1`$, $`e_2`$ y $`e_3`$, la misma variable vale 0. La primera versión usa información del futuro; la segunda es causal.
 
@@ -62,7 +62,7 @@ La causalidad es el requisito que evita la fuga de información (2.4.2). Una mé
 d^{out}(v) = \sum_{x \in V} m(v, x), \qquad d^{in}(v) = \sum_{x \in V} m(x, v),
 ```
 
-y las *fuerzas* de salida y de entrada son las sumas de los pesos correspondientes:
+y las *fuerzas* de salida y de entrada son las sumas de los pesos correspondientes (Newman, 2010):
 
 ```math
 s^{out}(v) = \sum_{e = (v, x) \in E} w(e), \qquad s^{in}(v) = \sum_{e = (x, v) \in E} w(e).
@@ -76,7 +76,7 @@ s^{out}(v) = \sum_{e = (v, x) \in E} w(e), \qquad s^{in}(v) = \sum_{e = (x, v) \
 - *Arista inversa previa*: $`\rho(e) = \mathbb{1}\big[\exists j : (u_j, v_j) = (v, u),\ t_j \lt  t\big]`$.
 - *Tiempo desde la última transacción del origen*: $`g(e) = t - \max\{t_j : e_j \prec e,\ u_j = u\}`$, con $`g(e) = -1`$ si el conjunto es vacío.
 
-Todas cumplen la Definición 2.5. En IBM AML se usa $`\Delta = 24`$ horas.
+Todas cumplen la Definición 2.5. La formulación como contadores causales es propia de esta tesis; el grado y la fuerza son las nociones estándar de la Definición 2.6. En IBM AML se usa $`\Delta = 24`$ horas.
 
 **Ejemplo 2.4 (grados y contadores causales).** En la red completa, D tiene grado de entrada $`d^{in}(D) = 5`$ (la pareja A→D cuenta dos veces), grado de salida $`d^{out}(D) = 1`$ y fuerza de entrada $`s^{in}(D) = 1\,580`$. Los contadores causales de la última transacción, $`e_8 = (A, D, 9, 150)`$, usan solo las siete anteriores (Figura 2.3):
 
@@ -90,13 +90,13 @@ Todas cumplen la Definición 2.5. En IBM AML se usa $`\Delta = 24`$ horas.
 
 **Figura 2.3.** Contadores causales de la transacción $`e_8`$ (A→D, $`t = 9`$). Solo cuentan las transacciones anteriores, y el *fan-in* solo las de la ventana de seis horas.
 
-**Definición 2.8 (vecindarios).** En un grafo dirigido simple, los *vecindarios de salida y de entrada* de $`v`$ son $`N^{+}(v) = \{x : (v, x) \in E\}`$ y $`N^{-}(v) = \{x : (x, v) \in E\}`$. El *vecindario de salida a distancia* $`k`$, $`N^{+}_k(v)`$, es el conjunto de nodos $`x \neq v`$ alcanzables desde $`v`$ por un camino de longitud a lo sumo $`k`$ (Definición 2.9); $`N^{-}_k(v)`$ se define de forma análoga.
+**Definición 2.8 (vecindarios).** En un grafo dirigido simple, los *vecindarios de salida y de entrada* de $`v`$ son $`N^{+}(v) = \{x : (v, x) \in E\}`$ y $`N^{-}(v) = \{x : (x, v) \in E\}`$. El *vecindario de salida a distancia* $`k`$, $`N^{+}_k(v)`$, es el conjunto de nodos $`x \neq v`$ alcanzables desde $`v`$ por un camino de longitud a lo sumo $`k`$ (Definición 2.9); $`N^{-}_k(v)`$ se define de forma análoga (Bang-Jensen y Gutin, 2009).
 
 **Ejemplo 2.5 (vecindarios).** En la versión simple de la red completa, $`N^{+}(E) = \{F, G\}`$, $`N^{-}(D) = \{A, B, C, F\}`$ y $`N^{+}_2(D) = \{E, F, G\}`$: desde D se llega a E en un paso, y a F y G en dos.
 
 ### 2.1.3 Caminos, ciclos y componentes
 
-**Definición 2.9 (paseo, camino y ciclo).** En un grafo dirigido $`G = (V, E)`$:
+**Definición 2.9 (paseo, camino y ciclo).** En un grafo dirigido $`G = (V, E)`$ (Bang-Jensen y Gutin, 2009):
 
 - Un *paseo* de longitud $`k`$ es una sucesión de nodos $`(x_0, x_1, \dots, x_k)`$ con $`(x_{i-1}, x_i) \in E`$ para $`i = 1, \dots, k`$.
 - Un *camino* es un paseo sin nodos repetidos.
@@ -104,7 +104,7 @@ Todas cumplen la Definición 2.5. En IBM AML se usa $`\Delta = 24`$ horas.
 - Se dice que $`y`$ es *alcanzable* desde $`x`$, y se escribe $`x \rightsquigarrow y`$, si existe un camino de $`x`$ a $`y`$.
 - La *distancia* $`\operatorname{dist}(x, y)`$ es la longitud del camino más corto de $`x`$ a $`y`$, o $`\infty`$ si $`y`$ no es alcanzable desde $`x`$.
 
-**Definición 2.10 (componentes).** La relación $`x \sim y \iff (x \rightsquigarrow y \ \wedge\ y \rightsquigarrow x)`$, junto con $`x \sim x`$, es de equivalencia. Sus clases son las *componentes fuertemente conexas*. Las *componentes débilmente conexas* son las componentes conexas del grafo no dirigido subyacente, que se obtiene ignorando la dirección de las aristas.
+**Definición 2.10 (componentes).** La relación $`x \sim y \iff (x \rightsquigarrow y \ \wedge\ y \rightsquigarrow x)`$, junto con $`x \sim x`$, es de equivalencia. Sus clases son las *componentes fuertemente conexas*. Las *componentes débilmente conexas* son las componentes conexas del grafo no dirigido subyacente, que se obtiene ignorando la dirección de las aristas (Bang-Jensen y Gutin, 2009).
 
 **Proposición 2.1.** En un grafo dirigido simple, un nodo pertenece a algún ciclo dirigido si y solo si su componente fuertemente conexa tiene más de un nodo. En consecuencia, el grafo es *acíclico* (no contiene ciclos dirigidos) si y solo si todas sus componentes fuertemente conexas son unitarias (Bang-Jensen y Gutin, 2009).
 
@@ -120,7 +120,7 @@ Esta proposición justifica que la pertenencia a ciclos se calcule mediante comp
 
 ### 2.1.4 Matriz de adyacencia y ciclos cortos
 
-**Definición 2.11 (matriz de adyacencia).** La *matriz de adyacencia* de un grafo dirigido simple $`G = (V, E)`$, con $`V = \{1, \dots, n\}`$, es la matriz $`A \in \{0, 1\}^{n \times n}`$ con $`A_{xy} = 1`$ si $`(x, y) \in E`$ y $`A_{xy} = 0`$ en otro caso.
+**Definición 2.11 (matriz de adyacencia).** La *matriz de adyacencia* de un grafo dirigido simple $`G = (V, E)`$, con $`V = \{1, \dots, n\}`$, es la matriz $`A \in \{0, 1\}^{n \times n}`$ con $`A_{xy} = 1`$ si $`(x, y) \in E`$ y $`A_{xy} = 0`$ en otro caso (Newman, 2010).
 
 **Proposición 2.2.** Para todo $`k \ge 1`$, $`(A^k)_{xy}`$ es el número de paseos de longitud $`k`$ de $`x`$ a $`y`$ (Newman, 2010).
 
@@ -222,11 +222,11 @@ El tamaño de la componente débilmente conexa y el de la componente fuertemente
 
 El análisis topológico de datos estudia la "forma" de un conjunto de datos mediante invariantes algebraicos que no cambian bajo deformaciones continuas (Carlsson, 2009). Esta sección define lo necesario para precisar qué parte de esa teoría usa la tesis y qué parte queda como trabajo futuro.
 
-**Definición 2.17 (complejo simplicial).** Un *complejo simplicial abstracto* $`K`$ sobre un conjunto finito $`V`$ es una familia de subconjuntos no vacíos de $`V`$, llamados *símplices*, cerrada bajo subconjuntos: si $`\sigma \in K`$ y $`\emptyset \neq \eta \subseteq \sigma`$, entonces $`\eta \in K`$. Un símplice con $`p + 1`$ elementos tiene *dimensión* $`p`$. Un grafo no dirigido simple es un complejo de dimensión 1: sus nodos son los 0-símplices y sus aristas, los 1-símplices.
+**Definición 2.17 (complejo simplicial).** Un *complejo simplicial abstracto* $`K`$ sobre un conjunto finito $`V`$ es una familia de subconjuntos no vacíos de $`V`$, llamados *símplices*, cerrada bajo subconjuntos: si $`\sigma \in K`$ y $`\emptyset \neq \eta \subseteq \sigma`$, entonces $`\eta \in K`$. Un símplice con $`p + 1`$ elementos tiene *dimensión* $`p`$. Un grafo no dirigido simple es un complejo de dimensión 1: sus nodos son los 0-símplices y sus aristas, los 1-símplices (Edelsbrunner y Harer, 2010).
 
 **Definición 2.18 (homología y números de Betti).** Sea $`C_p(K)`$ el espacio vectorial sobre $`\mathbb{F}_2`$ generado por los $`p`$-símplices de $`K`$, y sea $`\partial_p : C_p \to C_{p-1}`$ el operador borde, que envía cada símplice a la suma de sus caras de dimensión $`p - 1`$. El $`p`$-ésimo *grupo de homología* es $`H_p(K) = \ker \partial_p / \operatorname{im} \partial_{p+1}`$, y el $`p`$-ésimo *número de Betti* es $`\beta_p = \dim H_p(K)`$ (Edelsbrunner y Harer, 2010). Intuitivamente, $`\beta_0`$ cuenta las componentes conexas, $`\beta_1`$ los ciclos independientes y $`\beta_2`$ las cavidades.
 
-**Proposición 2.3.** Para un grafo no dirigido simple $`H = (V, E)`$ con $`c`$ componentes conexas,
+**Proposición 2.3.** Para un grafo no dirigido simple $`H = (V, E)`$ con $`c`$ componentes conexas (Edelsbrunner y Harer, 2010),
 
 ```math
 \beta_0(H) = c, \qquad \beta_1(H) = |E| - |V| + c.
@@ -264,7 +264,7 @@ Se dispone de transacciones $`e_i`$ con etiqueta $`y_i \in \{0, 1\}`$ ($`y_i = 1
 P(\theta) = \frac{\mathrm{TP}}{\mathrm{TP} + \mathrm{FP}}, \qquad R(\theta) = \frac{\mathrm{TP}}{\mathrm{TP} + \mathrm{FN}}, \qquad F_1(\theta) = \frac{2\,P R}{P + R} = \frac{2\,\mathrm{TP}}{2\,\mathrm{TP} + \mathrm{FP} + \mathrm{FN}}.
 ```
 
-La precisión mide qué fracción de las alertas son fraude. La exhaustividad mide qué fracción del fraude se detecta. $`F_1`$ es su media armónica y no usa los verdaderos negativos, lo que la hace adecuada cuando estos son abrumadoramente mayoritarios.
+La precisión mide qué fracción de las alertas son fraude (Manning et al., 2008). La exhaustividad mide qué fracción del fraude se detecta. $`F_1`$ es su media armónica (van Rijsbergen, 1979) y no usa los verdaderos negativos, lo que la hace adecuada cuando estos son abrumadoramente mayoritarios.
 
 **Definición 2.21 (PR-AUC).** Sean $`\theta_1 \gt  \theta_2 \gt  \cdots \gt  \theta_K`$ los valores distintos de los puntajes, y sean $`P_k`$ y $`R_k`$ la precisión y la exhaustividad con umbral $`\theta_k`$, con $`R_0 = 0`$. La *precisión promedio* es
 
@@ -274,7 +274,7 @@ La precisión mide qué fracción de las alertas son fraude. La exhaustividad mi
 
 una aproximación escalonada del área bajo la curva precisión-exhaustividad (Manning et al., 2008). En esta tesis se denomina **PR-AUC**. A diferencia de $`F_1`$, no depende de un umbral. Para un clasificador aleatorio su valor esperado es la prevalencia $`\pi_1`$ de la clase positiva, que sirve de referencia.
 
-**Definición 2.22 (ROC-AUC).** El área bajo la curva ROC es la probabilidad de que una transacción ilícita elegida al azar reciba un puntaje mayor que una legítima elegida al azar: $`\Pr(s^{+} \gt  s^{-})`$, contando los empates como 1/2.
+**Definición 2.22 (ROC-AUC).** El área bajo la curva ROC es la probabilidad de que una transacción ilícita elegida al azar reciba un puntaje mayor que una legítima elegida al azar: $`\Pr(s^{+} \gt  s^{-})`$, contando los empates como 1/2 (Hanley y McNeil, 1982; Fawcett, 2006).
 
 **Ejemplo 2.14 (métricas de evaluación).** Cinco transacciones reciben los puntajes 0.9, 0.8, 0.7, 0.4 y 0.2, y solo la primera y la tercera son ilícitas. Con umbral $`\theta = 0.75`$ se alertan las dos primeras: $`\mathrm{TP} = 1`$, $`\mathrm{FP} = 1`$ y $`\mathrm{FN} = 1`$, de modo que $`P = R = F_1 = 0.5`$. Al recorrer los umbrales de mayor a menor, la exhaustividad sube a 0.5 con el primer puntaje (precisión 1) y a 1 con el tercero (precisión 2/3), así que $`\mathrm{AP} = 0.5 \cdot 1 + 0.5 \cdot 2/3 = 0.833`$. La ROC-AUC también vale 0.833: de los seis pares formados por una transacción ilícita y una legítima, en cinco la ilícita tiene el puntaje más alto. Como la prevalencia es 2/5, un clasificador aleatorio obtendría $`\mathrm{AP} \approx 0.4`$.
 

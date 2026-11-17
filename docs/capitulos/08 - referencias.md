@@ -34,9 +34,13 @@ Egressy, B., von Niederhäusern, L., Blanuša, J., Altman, E., Wattenhofer, R. y
 
 Real Academia Española y Asociación de Academias de la Lengua Española (2010). *Ortografía de la lengua española*. Espasa.
 
+Fawcett, T. (2006). An Introduction to ROC Analysis. *Pattern Recognition Letters*, *27*(8), 861–874.
+
 Freeman, L. C. (1977). A Set of Measures of Centrality Based on Betweenness. *Sociometry*, *40*(1), 35–41.
 
 Geirhos, R., Jacobsen, J. H., Michaelis, C., Zemel, R., Brendel, W., Bethge, M. y Wichmann, F. A. (2020). Shortcut learning in deep neural networks. *Nature Machine Intelligence*, *2*, 665–673.
+
+Hanley, J. A. y McNeil, B. J. (1982). The Meaning and Use of the Area under a Receiver Operating Characteristic (ROC) Curve. *Radiology*, *143*(1), 29–36.
 
 Holme, P. y Saramäki, J. (2012). Temporal networks. *Physics Reports*, *519*(3), 97–125.
 
