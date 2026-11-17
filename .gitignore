@@ -205,3 +205,8 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Datos de PaySim descargados (471 MB) y artefactos pesados
+data/raw/_kagglehub/
+data/processed/*.parquet
+results/*.parquet
