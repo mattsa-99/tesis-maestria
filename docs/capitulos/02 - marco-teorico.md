@@ -10,9 +10,9 @@ Esta sección fija la notación y las definiciones que se usan en el resto de la
 
 **Definición 2.1 (grafo dirigido).** Un *grafo dirigido* es un par $`G = (V, E)`$, donde $`V`$ es un conjunto finito de *nodos* y $`E \subseteq V \times V`$ un conjunto de *aristas*. Cada arista es un par ordenado $`(u, v)`$, que se escribe $`u \to v`$; $`u`$ es su *origen* y $`v`$ su *destino*. Una arista $`(v, v)`$ se llama *lazo*. Un grafo dirigido es *simple* si no tiene lazos.
 
-**Definición 2.2 (multigrafo dirigido ponderado).** Un *multigrafo dirigido ponderado* es una terna $`G = (V, E, w)`$, donde $`E`$ es un multiconjunto finito de pares ordenados de $`V \times V`$ y $`w : E \to \mathbb{R}_{>0}`$ asigna un peso a cada arista. La *multiplicidad* $`m(u, v)`$ es el número de aristas $`u \to v`$ en $`E`$.
+**Definición 2.2 (multigrafo dirigido ponderado).** Un *multigrafo dirigido ponderado* es una terna $`G = (V, E, w)`$, donde $`E`$ es un multiconjunto finito de pares ordenados de $`V \times V`$ y $`w : E \to \mathbb{R}_{\gt 0}`$ asigna un peso a cada arista. La *multiplicidad* $`m(u, v)`$ es el número de aristas $`u \to v`$ en $`E`$.
 
-**Definición 2.3 (grafo temporal de transacciones).** Un *grafo temporal de transacciones* es un par $`\mathcal{G} = (V, \mathcal{E})`$, donde $`\mathcal{E}`$ es una sucesión finita de transacciones $`e_i = (u_i, v_i, t_i, w_i)`$, $`i = 1, \dots, N`$, con origen $`u_i \in V`$, destino $`v_i \in V`$, instante $`t_i \in \mathbb{R}`$ y monto $`w_i > 0`$ (Holme y Saramäki, 2012). Se define el **orden de las transacciones** $`e_j \prec e_i`$ si $`t_j < t_i`$, o si $`t_j = t_i`$ y $`j < i`$. Así, $`\prec`$ es un orden total que refleja la secuencia en que se registran las transacciones.
+**Definición 2.3 (grafo temporal de transacciones).** Un *grafo temporal de transacciones* es un par $`\mathcal{G} = (V, \mathcal{E})`$, donde $`\mathcal{E}`$ es una sucesión finita de transacciones $`e_i = (u_i, v_i, t_i, w_i)`$, $`i = 1, \dots, N`$, con origen $`u_i \in V`$, destino $`v_i \in V`$, instante $`t_i \in \mathbb{R}`$ y monto $`w_i \gt  0`$ (Holme y Saramäki, 2012). Se define el **orden de las transacciones** $`e_j \prec e_i`$ si $`t_j \lt  t_i`$, o si $`t_j = t_i`$ y $`j \lt  i`$. Así, $`\prec`$ es un orden total que refleja la secuencia en que se registran las transacciones.
 
 **Definición 2.4 (instantánea).** Dado un instante $`\tau`$, la *instantánea* hasta $`\tau`$ es el multigrafo
 
@@ -20,13 +20,13 @@ Esta sección fija la notación y las definiciones que se usan en el resto de la
 G_{<\tau} = \big(V,\ \{\!\{(u_j, v_j) : t_j < \tau\}\!\},\ w\big),
 ```
 
-formado por todas las transacciones anteriores a $`\tau`$. Su *versión simple* $`\bar{G}_{<\tau} = (V, \bar{E}_{<\tau})`$ conserva una sola arista por par y elimina los lazos:
+formado por todas las transacciones anteriores a $`\tau`$. Su *versión simple* $`\bar{G}_{\lt \tau} = (V, \bar{E}_{\lt \tau})`$ conserva una sola arista por par y elimina los lazos:
 
 ```math
 \bar{E}_{<\tau} = \{(u, v) : u \neq v,\ \exists j,\ (u_j, v_j) = (u, v),\ t_j < \tau\}.
 ```
 
-En esta tesis las métricas de PaySim se calculan sobre $`G_{<\tau}`$ y las de IBM AML sobre $`\bar{G}_{<\tau}`$ (3.4.3).
+En esta tesis las métricas de PaySim se calculan sobre $`G_{\lt \tau}`$ y las de IBM AML sobre $`\bar{G}_{\lt \tau}`$ (3.4.3).
 
 **Definición 2.5 (variable causal).** Sea $`\mathcal{H}_{\prec e} = \{e_j : e_j \prec e\}`$ la *historia* de la transacción $`e`$. Una variable $`f`$ es *causal* si existe una función $`\varphi`$ tal que, para toda transacción $`e`$,
 
@@ -34,9 +34,9 @@ En esta tesis las métricas de PaySim se calculan sobre $`G_{<\tau}`$ y las de I
 f(e) = \varphi\big(e,\ \mathcal{H}_{\prec e}\big),
 ```
 
-es decir, si su valor depende solo de la propia transacción y de las anteriores. En particular, una variable calculada sobre una instantánea $`G_{<\tau}`$ con $`\tau \le t_e`$ es causal.
+es decir, si su valor depende solo de la propia transacción y de las anteriores. En particular, una variable calculada sobre una instantánea $`G_{\lt \tau}`$ con $`\tau \le t_e`$ es causal.
 
-La causalidad es el requisito que evita la fuga de información (2.4.2). Una métrica calculada sobre el grafo completo $`G_{<\infty}`$ no es causal, porque incorpora transacciones posteriores a $`e`$.
+La causalidad es el requisito que evita la fuga de información (2.4.2). Una métrica calculada sobre el grafo completo $`G_{\lt \infty}`$ no es causal, porque incorpora transacciones posteriores a $`e`$.
 
 ### 2.1.2 Grado, fuerza y vecindarios
 
@@ -52,12 +52,12 @@ y las *fuerzas* de salida y de entrada son las sumas de los pesos correspondient
 s^{out}(v) = \sum_{e = (v, x) \in E} w(e), \qquad s^{in}(v) = \sum_{e = (x, v) \in E} w(e).
 ```
 
-**Definición 2.7 (contadores causales).** Para una transacción $`e = (u, v, t, w)`$ y una ventana $`\Delta > 0`$ se definen:
+**Definición 2.7 (contadores causales).** Para una transacción $`e = (u, v, t, w)`$ y una ventana $`\Delta \gt  0`$ se definen:
 
 - *Grado previo de salida del origen*: $`d^{out}_{\prec e}(u) = |\{e_j \prec e : u_j = u\}|`$, y análogamente $`d^{in}_{\prec e}`$ y los grados del destino.
-- ***Fan-out*** del origen en la ventana $`\Delta`$: $`F^{out}_{\Delta}(e) = |\{e_j : u_j = u,\ t - \Delta \le t_j < t\}|`$. El ***fan-in*** del destino $`F^{in}_{\Delta}(e)`$ se define de forma simétrica con $`v_j = v`$.
+- ***Fan-out*** del origen en la ventana $`\Delta`$: $`F^{out}_{\Delta}(e) = |\{e_j : u_j = u,\ t - \Delta \le t_j \lt  t\}|`$. El ***fan-in*** del destino $`F^{in}_{\Delta}(e)`$ se define de forma simétrica con $`v_j = v`$.
 - *Repetición del par*: $`r(e) = |\{e_j \prec e : (u_j, v_j) = (u, v)\}|`$.
-- *Arista inversa previa*: $`\rho(e) = \mathbb{1}\big[\exists j : (u_j, v_j) = (v, u),\ t_j < t\big]`$.
+- *Arista inversa previa*: $`\rho(e) = \mathbb{1}\big[\exists j : (u_j, v_j) = (v, u),\ t_j \lt  t\big]`$.
 - *Tiempo desde la última transacción del origen*: $`g(e) = t - \max\{t_j : e_j \prec e,\ u_j = u\}`$, con $`g(e) = -1`$ si el conjunto es vacío.
 
 Todas cumplen la Definición 2.5. En IBM AML se usa $`\Delta = 24`$ horas.
@@ -90,7 +90,7 @@ Esta proposición justifica que la pertenencia a ciclos se calcule mediante comp
 
 *Demostración.* Por inducción sobre $`k`$. El caso $`k = 1`$ es la definición. Si vale para $`k`$, entonces $`(A^{k+1})_{xy} = \sum_{z} (A^{k})_{xz} A_{zy}`$, que suma, sobre cada nodo $`z`$ con arista $`z \to y`$, el número de paseos de longitud $`k`$ de $`x`$ a $`z`$. $`\square`$
 
-**Corolario 2.1 (cierre de ciclo de longitud 3).** Sea $`e = (u, v, t, w)`$ con $`u \neq v`$ y sea $`A`$ la matriz de adyacencia de la versión simple de la instantánea, $`\bar{G}_{<\tau}`$. Si $`(A^2)_{vu} > 0`$, existe un nodo $`z`$ con $`v \to z \to u`$. Como $`\bar{G}_{<\tau}`$ no tiene lazos, $`z \neq u`$ y $`z \neq v`$, y la transacción $`e`$ cierra el ciclo dirigido $`(u, v, z, u)`$ de longitud 3. La variable `closes_3cycle` de IBM AML es la indicadora $`\mathbb{1}[(A^2)_{vu} > 0]`$. La arista inversa previa $`\rho(e)`$ de la Definición 2.7 es el análogo de longitud 2, $`\mathbb{1}[A_{vu} > 0]`$, pero se evalúa sobre toda la historia anterior a $`t`$ y no sobre la instantánea, por lo que no tiene rezago.
+**Corolario 2.1 (cierre de ciclo de longitud 3).** Sea $`e = (u, v, t, w)`$ con $`u \neq v`$ y sea $`A`$ la matriz de adyacencia de la versión simple de la instantánea, $`\bar{G}_{\lt \tau}`$. Si $`(A^2)_{vu} \gt  0`$, existe un nodo $`z`$ con $`v \to z \to u`$. Como $`\bar{G}_{\lt \tau}`$ no tiene lazos, $`z \neq u`$ y $`z \neq v`$, y la transacción $`e`$ cierra el ciclo dirigido $`(u, v, z, u)`$ de longitud 3. La variable `closes_3cycle` de IBM AML es la indicadora $`\mathbb{1}[(A^2)_{vu} \gt  0]`$. La arista inversa previa $`\rho(e)`$ de la Definición 2.7 es el análogo de longitud 2, $`\mathbb{1}[A_{vu} \gt  0]`$, pero se evalúa sobre toda la historia anterior a $`t`$ y no sobre la instantánea, por lo que no tiene rezago.
 
 ## 2.2 Métricas topológicas
 
@@ -172,11 +172,11 @@ El análisis topológico de datos estudia la "forma" de un conjunto de datos med
 
 *Demostración.* $`\beta_0 = c`$ porque $`H_0`$ tiene una clase por componente. Por la fórmula de Euler-Poincaré, la característica de Euler cumple $`\chi = |V| - |E| = \beta_0 - \beta_1`$, ya que no hay símplices de dimensión mayor que 1. Despejando se obtiene $`\beta_1`$. $`\square`$
 
-Una precisión es importante para esta tesis. **$`\beta_1`$ cuenta los ciclos del grafo *no dirigido* subyacente, no los ciclos dirigidos.** Un grafo dirigido acíclico puede tener $`\beta_1 > 0`$: por ejemplo, las aristas $`a \to b`$, $`a \to c`$ y $`b \to c`$ forman un ciclo no dirigido pero ninguno dirigido. Las variables de ciclos de esta tesis (Proposición 2.1 y Corolario 2.1) son, por tanto, un **refinamiento dirigido** que $`\beta_1`$ no captura. Solo el tamaño de la componente débil está directamente relacionado con $`H_0`$. Los valores de $`\beta_0`$ y $`\beta_1`$ de cada grafo estudiado se reportan como descripción en el Capítulo 4 (Tablas 4.1 y 4.5).
+Una precisión es importante para esta tesis. **$`\beta_1`$ cuenta los ciclos del grafo *no dirigido* subyacente, no los ciclos dirigidos.** Un grafo dirigido acíclico puede tener $`\beta_1 \gt  0`$: por ejemplo, las aristas $`a \to b`$, $`a \to c`$ y $`b \to c`$ forman un ciclo no dirigido pero ninguno dirigido. Las variables de ciclos de esta tesis (Proposición 2.1 y Corolario 2.1) son, por tanto, un **refinamiento dirigido** que $`\beta_1`$ no captura. Solo el tamaño de la componente débil está directamente relacionado con $`H_0`$. Los valores de $`\beta_0`$ y $`\beta_1`$ de cada grafo estudiado se reportan como descripción en el Capítulo 4 (Tablas 4.1 y 4.5).
 
 **Definición 2.19 (filtración y homología persistente).** Una *filtración* de un complejo $`K`$ es una sucesión creciente de subcomplejos $`\emptyset = K_0 \subseteq K_1 \subseteq \cdots \subseteq K_m = K`$. Las inclusiones inducen aplicaciones lineales $`H_p(K_i) \to H_p(K_j)`$ para $`i \le j`$. La *homología persistente* registra, para cada clase de homología, el índice $`b`$ en que aparece y el índice $`d`$ en que deja de existir. El resultado es un multiconjunto de pares $`(b, d)`$, el *diagrama de persistencia* o *código de barras* (Zomorodian y Carlsson, 2005; Edelsbrunner y Harer, 2010). Las clases con $`d - b`$ grande se interpretan como estructura y las de vida corta, como ruido.
 
-Para un grafo temporal, una filtración natural es la sucesión de instantáneas $`\bar{G}_{<\tau_1} \subseteq \bar{G}_{<\tau_2} \subseteq \cdots`$, vistas como complejos de dimensión 1. Su persistencia describiría cuándo aparecen y se fusionan componentes y cuándo se forman ciclos. Esta tesis no calcula diagramas de persistencia, y su uso como variables se propone como trabajo futuro (6.4).
+Para un grafo temporal, una filtración natural es la sucesión de instantáneas $`\bar{G}_{\lt \tau_1} \subseteq \bar{G}_{\lt \tau_2} \subseteq \cdots`$, vistas como complejos de dimensión 1. Su persistencia describiría cuándo aparecen y se fusionan componentes y cuándo se forman ciclos. Esta tesis no calcula diagramas de persistencia, y su uso como variables se propone como trabajo futuro (6.4).
 
 ## 2.4 Detección de fraude como clasificación desbalanceada
 
@@ -192,7 +192,7 @@ P(\theta) = \frac{\mathrm{TP}}{\mathrm{TP} + \mathrm{FP}}, \qquad R(\theta) = \f
 
 La precisión mide qué fracción de las alertas son fraude. La exhaustividad mide qué fracción del fraude se detecta. $`F_1`$ es su media armónica y no usa los verdaderos negativos, lo que la hace adecuada cuando estos son abrumadoramente mayoritarios.
 
-**Definición 2.21 (PR-AUC).** Sean $`\theta_1 > \theta_2 > \cdots > \theta_K`$ los valores distintos de los puntajes, y sean $`P_k`$ y $`R_k`$ la precisión y la exhaustividad con umbral $`\theta_k`$, con $`R_0 = 0`$. La *precisión promedio* es
+**Definición 2.21 (PR-AUC).** Sean $`\theta_1 \gt  \theta_2 \gt  \cdots \gt  \theta_K`$ los valores distintos de los puntajes, y sean $`P_k`$ y $`R_k`$ la precisión y la exhaustividad con umbral $`\theta_k`$, con $`R_0 = 0`$. La *precisión promedio* es
 
 ```math
 \mathrm{AP} = \sum_{k=1}^{K} (R_k - R_{k-1})\, P_k,
@@ -200,13 +200,13 @@ La precisión mide qué fracción de las alertas son fraude. La exhaustividad mi
 
 una aproximación escalonada del área bajo la curva precisión-exhaustividad (Manning et al., 2008). En esta tesis se denomina **PR-AUC**. A diferencia de $`F_1`$, no depende de un umbral. Para un clasificador aleatorio su valor esperado es la prevalencia $`\pi_1`$ de la clase positiva, que sirve de referencia.
 
-**Definición 2.22 (ROC-AUC).** El área bajo la curva ROC es la probabilidad de que una transacción ilícita elegida al azar reciba un puntaje mayor que una legítima elegida al azar: $`\Pr(s^{+} > s^{-})`$, contando los empates como 1/2.
+**Definición 2.22 (ROC-AUC).** El área bajo la curva ROC es la probabilidad de que una transacción ilícita elegida al azar reciba un puntaje mayor que una legítima elegida al azar: $`\Pr(s^{+} \gt  s^{-})`$, contando los empates como 1/2.
 
 Con clases muy desbalanceadas, la ROC-AUC puede ser alta aunque la precisión sea baja, porque los falsos positivos se diluyen entre los numerosos verdaderos negativos. Por eso se prefieren $`F_1`$ y PR-AUC (Saito y Rehmsmeier, 2015).
 
 ### 2.4.2 Fuga de información
 
-Una variable sufre *fuga de información* cuando contiene datos que no estarían disponibles al momento de la predicción o que codifican la etiqueta (Kaufman et al., 2012). En términos de la Definición 2.5, toda variable no causal es una fuente potencial de fuga. En grafos el riesgo es específico: una métrica calculada sobre $`G_{<\infty}`$ incorpora transacciones posteriores, incluidas las que completan el patrón de fraude que se quiere predecir.
+Una variable sufre *fuga de información* cuando contiene datos que no estarían disponibles al momento de la predicción o que codifican la etiqueta (Kaufman et al., 2012). En términos de la Definición 2.5, toda variable no causal es una fuente potencial de fuga. En grafos el riesgo es específico: una métrica calculada sobre $`G_{\lt \infty}`$ incorpora transacciones posteriores, incluidas las que completan el patrón de fraude que se quiere predecir.
 
 ### 2.4.3 Desbalance y validación temporal
 

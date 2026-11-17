@@ -99,7 +99,7 @@ La prueba contiene 920 fraudes TRANSFER y 920 CASH_OUT. Con la semilla 42, N0 de
 | Cuentas ilícitas en ciclos / todas las cuentas en ciclos | 24.8 % / 4.5 % | 25.6 % / 3.7 % | — |
 | $`\beta_0`$ / $`\beta_1`$ del grafo no dirigido subyacente | 114 244 / 242 796 | 160 049 / 329 961 | 49 / 30 635 |
 
-Los valores de $`\beta`$ de IBM corresponden a los conjuntos recortados. Elliptic tiene una componente por periodo ($`\beta_0 = 49`$) y $`\beta_1 > 0`$ aunque no contiene ningún ciclo dirigido. En IBM HI-Small, después del 2022-09-10 quedan 1 108 transacciones, de las cuales 655 son ilícitas. La proporción diaria de ilícitas en ese tramo va del 57 % al 73 %.
+Los valores de $`\beta`$ de IBM corresponden a los conjuntos recortados. Elliptic tiene una componente por periodo ($`\beta_0 = 49`$) y $`\beta_1 \gt  0`$ aunque no contiene ningún ciclo dirigido. En IBM HI-Small, después del 2022-09-10 quedan 1 108 transacciones, de las cuales 655 son ilícitas. La proporción diaria de ilícitas en ese tramo va del 57 % al 73 %.
 
 ## 4.6 Contraste confirmatorio: IBM AML HI-Small (P1)
 

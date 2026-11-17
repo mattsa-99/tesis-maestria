@@ -14,6 +14,7 @@ Uso:
                                                                    # (para VS Code, pandoc sin tex_math_gfm, etc.)
 
 Las fórmulas que quedaban dentro de cursivas (`*...$k$...*`) se sacan de ellas, porque GitHub no las renderiza.
+En las fórmulas en línea, `<` y `>` pasan a `\\lt` y `\\gt` (GitHub los escapa dos veces con la sintaxis de comillas).
 Ambas conversiones son idempotentes.
 """
 import re
@@ -55,7 +56,11 @@ def a_github(text: str) -> str:
 
     def back(m: re.Match) -> str:
         kind, body = math[int(m.group(2))]
-        return f"\n\n```math\n{body}\n```\n\n" if kind == "D" else f"$`{body}`$"
+        if kind == "D":
+            return f"\n\n```math\n{body}\n```\n\n"
+        # GitHub escapa dos veces < y > dentro de $`...`$ y se ven como "&lt;"; \lt y \gt se dibujan igual.
+        body = body.replace("<", r"\lt ").replace(">", r"\gt ")
+        return f"$`{body}`$"
     text = re.sub(r"\x00([MD])(\d+)\x00", back, text)
     text = re.sub(r"[ \t]*\n*(```math\n.*?\n```)[ \t]*\n*", r"\n\n\1\n\n", text, flags=re.S)
     return re.sub(r"\x01P(\d+)\x01", lambda m: prot[int(m.group(1))], text)
