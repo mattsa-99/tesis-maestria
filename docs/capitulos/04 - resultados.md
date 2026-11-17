@@ -20,9 +20,9 @@ Todas las cifras se obtienen con los scripts de `experiments/` y se guardan en `
 | Fraudes cuyo origen aparece una sola vez | 99.66 % |
 | Destinos de TRANSFER fraudulentas que luego actúan como origen | 0.20 % |
 | Ciclos dirigidos | 0 |
-| $\beta_0$ / $\beta_1$ del grafo no dirigido subyacente (Proposición 2.3) | 2 711 280 / 0 |
+| $`\beta_0`$ / $`\beta_1`$ del grafo no dirigido subyacente (Proposición 2.3) | 2 711 280 / 0 |
 
-El grafo no contiene ciclos dirigidos en ninguna de las 31 instantáneas diarias, y su grafo no dirigido subyacente es un bosque ($\beta_1 = 0$): no tiene ciclos de ningún tipo. Al momento del fraude, los destinos fraudulentos habían recibido en promedio 8.1 transacciones previas.
+El grafo no contiene ciclos dirigidos en ninguna de las 31 instantáneas diarias, y su grafo no dirigido subyacente es un bosque ($`\beta_1 = 0`$): no tiene ciclos de ningún tipo. Al momento del fraude, los destinos fraudulentos habían recibido en promedio 8.1 transacciones previas.
 
 ## 4.2 Contraste de la hipótesis en PaySim
 
@@ -30,7 +30,7 @@ La prueba contiene 161 426 transacciones y 1 840 fraudes (prevalencia 1.14 %; PR
 
 **Tabla 4.2.** Desempeño en prueba por configuración (PaySim, *Random Forest*).
 
-| Configuración | $F_1$ | Precisión | Exhaustividad | PR-AUC |
+| Configuración | $`F_1`$ | Precisión | Exhaustividad | PR-AUC |
 |---|---|---|---|---|
 | B0 Base (8 variables) | 0.9968 ± 0.0016 | 0.9982 | 0.9955 | 0.99998 |
 | B1 B0 + comercio (9) | 0.9978 ± 0.0010 | 0.9993 | 0.9964 | 0.99999 |
@@ -39,13 +39,13 @@ La prueba contiene 161 426 transacciones y 1 840 fraudes (prevalencia 1.14 %; PR
 | T3 B1 + grado + instantáneas (22) | 0.9948 ± 0.0003 | 0.9980 | 0.9917 | 0.99988 |
 | T4 Solo topológicas (13) | 0.0308 ± 0.0009 | 0.0158 | 0.6469 | 0.0152 |
 
-T3 cumple $F_1 \ge 0.80$, pero $\Delta F_1 = F_1(\text{T3}) - F_1(\text{B1}) \in [-0.0057, -0.0016]$, con $P(\Delta F_1 \le 0) = 1.0$. **El criterio del Estudio 1 no se cumple: no se rechaza H0.** Frente a B0, el resultado es el mismo ($\Delta F_1 \in [-0.0051, -0.0011]$). La diferencia entre B1 y B0 es $[0.0000, +0.0014]$.
+T3 cumple $`F_1 \ge 0.80`$, pero $`\Delta F_1 = F_1(\text{T3}) - F_1(\text{B1}) \in [-0.0057, -0.0016]`$, con $`P(\Delta F_1 \le 0) = 1.0`$. **El criterio del Estudio 1 no se cumple: no se rechaza H0.** Frente a B0, el resultado es el mismo ($`\Delta F_1 \in [-0.0051, -0.0011]`$). La diferencia entre B1 y B0 es $`[0.0000, +0.0014]`$.
 
-En la ablación (semilla 42), el $F_1$ de T3 es 0.9951. Sin grado y fuerza es 0.9954; sin instantáneas, 0.9951; sin comercio, 0.9948, y sin las variables base, 0.127. T4 obtiene un ROC-AUC de 0.600. Con *gradient boosting*, B1 y T3 obtienen el mismo $F_1$ (0.947 ± 0.012 y 0.947 ± 0.015, respectivamente).
+En la ablación (semilla 42), el $`F_1`$ de T3 es 0.9951. Sin grado y fuerza es 0.9954; sin instantáneas, 0.9951; sin comercio, 0.9948, y sin las variables base, 0.127. T4 obtiene un ROC-AUC de 0.600. Con *gradient boosting*, B1 y T3 obtienen el mismo $`F_1`$ (0.947 ± 0.012 y 0.947 ± 0.015, respectivamente).
 
 ![Figura 4.1](../../results/figuras/f1_por_config.png)
 
-**Figura 4.1.** $F_1$ en prueba por configuración en PaySim (media ± desviación estándar).
+**Figura 4.1.** $`F_1`$ en prueba por configuración en PaySim (media ± desviación estándar).
 
 ## 4.3 Variables dominantes del modelo de referencia en PaySim
 
@@ -69,20 +69,20 @@ La Tabla 4.4 y la Figura 4.3 muestran el desempeño al retirar esas cuatro varia
 
 **Tabla 4.4.** Desempeño sin monto, saldo de origen, su razón ni fondos insuficientes (PaySim, *Random Forest*).
 
-| Configuración | $F_1$ | Precisión | Exhaustividad | PR-AUC |
+| Configuración | $`F_1`$ | Precisión | Exhaustividad | PR-AUC |
 |---|---|---|---|---|
 | N0 Sin saldos (5 variables) | 0.404 | 0.338 | 0.500 | 0.201 |
 | N1 N0 + grado y fuerza (11) | 0.470 | 0.443 | 0.499 | 0.258 |
 | N2 N0 + instantáneas (12) | 0.469 | 0.443 | 0.499 | 0.261 |
 | N3 N0 + ambos (18) | 0.470 | 0.443 | 0.499 | 0.258 |
 
-Frente a N0, $\Delta F_1 \in [+0.061, +0.072]$ para N1 y N3, y $[+0.061, +0.071]$ para N2. La desviación estándar entre semillas es 0.000 en las cuatro configuraciones.
+Frente a N0, $`\Delta F_1 \in [+0.061, +0.072]`$ para N1 y N3, y $`[+0.061, +0.071]`$ para N2. La desviación estándar entre semillas es 0.000 en las cuatro configuraciones.
 
 La prueba contiene 920 fraudes TRANSFER y 920 CASH_OUT. Con la semilla 42, N0 detecta los 920 TRANSFER y N3 detecta 919; ninguno de los dos detecta ningún CASH_OUT, lo que explica la exhaustividad de 0.50. Todos los falsos positivos son transacciones TRANSFER: 1 799 en N0 y 1 154 en N3. Todos los TRANSFER fraudulentos de prueba tienen un destino con saldo previo cero. Las variables topológicas más importantes de N3 son la fuerza de entrada previa del destino, el tiempo desde su última entrada y su grado de entrada previo.
 
 ![Figura 4.3](../../results/figuras/sin_atajo.png)
 
-**Figura 4.3.** $F_1$ y PR-AUC en PaySim sin las variables de saldo.
+**Figura 4.3.** $`F_1`$ y PR-AUC en PaySim sin las variables de saldo.
 
 **Estudio 2: datos con estructura de red** (secciones 4.5 a 4.9)
 
@@ -97,9 +97,9 @@ La prueba contiene 920 fraudes TRANSFER y 920 CASH_OUT. Con la semilla 42, N0 de
 | Nodos en ciclos (componente fuerte > 1) | 23 247 | 26 355 | 0 |
 | Mayor componente fuerte | 17 075 | 17 827 | 1 |
 | Cuentas ilícitas en ciclos / todas las cuentas en ciclos | 24.8 % / 4.5 % | 25.6 % / 3.7 % | — |
-| $\beta_0$ / $\beta_1$ del grafo no dirigido subyacente | 114 244 / 242 796 | 160 049 / 329 961 | 49 / 30 635 |
+| $`\beta_0`$ / $`\beta_1`$ del grafo no dirigido subyacente | 114 244 / 242 796 | 160 049 / 329 961 | 49 / 30 635 |
 
-Los valores de $\beta$ de IBM corresponden a los conjuntos recortados. Elliptic tiene una componente por periodo ($\beta_0 = 49$) y $\beta_1 > 0$ aunque no contiene ningún ciclo dirigido. En IBM HI-Small, después del 2022-09-10 quedan 1 108 transacciones, de las cuales 655 son ilícitas. La proporción diaria de ilícitas en ese tramo va del 57 % al 73 %.
+Los valores de $`\beta`$ de IBM corresponden a los conjuntos recortados. Elliptic tiene una componente por periodo ($`\beta_0 = 49`$) y $`\beta_1 > 0`$ aunque no contiene ningún ciclo dirigido. En IBM HI-Small, después del 2022-09-10 quedan 1 108 transacciones, de las cuales 655 son ilícitas. La proporción diaria de ilícitas en ese tramo va del 57 % al 73 %.
 
 ## 4.6 Contraste confirmatorio: IBM AML HI-Small (P1)
 
@@ -107,7 +107,7 @@ La prueba contiene 1 015 448 transacciones, de las cuales 1 143 son ilícitas (p
 
 **Tabla 4.6.** Desempeño en prueba por configuración (IBM HI-Small, *Random Forest*).
 
-| Configuración | $F_1$ | Precisión | Exhaustividad | PR-AUC |
+| Configuración | $`F_1`$ | Precisión | Exhaustividad | PR-AUC |
 |---|---|---|---|---|
 | B Transaccional (10) | 0.136 ± 0.007 | 0.140 | 0.134 | 0.062 |
 | T1 B + contadores (22) | 0.598 ± 0.009 | 0.732 | 0.506 | 0.559 |
@@ -117,13 +117,15 @@ La prueba contiene 1 015 448 transacciones, de las cuales 1 143 son ilícitas (p
 
 Para T3 frente a B:
 
-$$\Delta F_1 \in [+0.448,\ +0.504], \qquad \Delta \text{PR-AUC} \in [+0.464,\ +0.521].$$
+```math
+\Delta F_1 \in [+0.448,\ +0.504], \qquad \Delta \text{PR-AUC} \in [+0.464,\ +0.521].
+```
 
-**Ambos límites inferiores son positivos: según el criterio definido antes de los experimentos (3.7.2), los resultados apoyan H1.** En los 1 000 remuestreos, $\Delta F_1$ y $\Delta$PR-AUC fueron positivos. Con *gradient boosting*, el $F_1$ es 0.150 ± 0.004 para B y 0.506 ± 0.025 para T3.
+**Ambos límites inferiores son positivos: según el criterio definido antes de los experimentos (3.7.2), los resultados apoyan H1.** En los 1 000 remuestreos, $`\Delta F_1`$ y $`\Delta`$PR-AUC fueron positivos. Con *gradient boosting*, el $`F_1`$ es 0.150 ± 0.004 para B y 0.506 ± 0.025 para T3.
 
 ![Figura 4.4](../../results/figuras/ibm_configs.png)
 
-**Figura 4.4.** $F_1$ (puntos) y PR-AUC (barras) por configuración en IBM HI-Small y LI-Small.
+**Figura 4.4.** $`F_1`$ (puntos) y PR-AUC (barras) por configuración en IBM HI-Small y LI-Small.
 
 ## 4.7 Réplicas (P2)
 
@@ -133,7 +135,7 @@ La prueba contiene 1 384 766 transacciones, de las cuales 791 son ilícitas (pre
 
 **Tabla 4.7.** Desempeño en prueba por configuración (IBM LI-Small, *Random Forest*).
 
-| Configuración | $F_1$ | PR-AUC |
+| Configuración | $`F_1`$ | PR-AUC |
 |---|---|---|
 | B Transaccional | 0.044 ± 0.002 | 0.013 |
 | T1 B + contadores | 0.276 ± 0.004 | 0.225 |
@@ -141,11 +143,11 @@ La prueba contiene 1 384 766 transacciones, de las cuales 791 son ilícitas (pre
 | T3 Completo | 0.266 ± 0.005 | 0.225 |
 | T4 Contadores + instantáneas | 0.174 ± 0.006 | 0.104 |
 
-Para T3 frente a B, $\Delta F_1 \in [+0.196, +0.258]$ y $\Delta$PR-AUC $\in [+0.185, +0.243]$. **La réplica cumple el criterio.**
+Para T3 frente a B, $`\Delta F_1 \in [+0.196, +0.258]`$ y $`\Delta`$PR-AUC $`\in [+0.185, +0.243]`$. **La réplica cumple el criterio.**
 
 ### 4.7.2 IBM AML HI-Small sin recorte temporal (sensibilidad)
 
-Con el conjunto completo, el $F_1$ de B es 0.238 ± 0.012 y el de T3, 0.717 ± 0.006. Para T3 frente a B, $\Delta F_1 \in [+0.454, +0.499]$ y $\Delta$PR-AUC $\in [+0.509, +0.555]$.
+Con el conjunto completo, el $`F_1`$ de B es 0.238 ± 0.012 y el de T3, 0.717 ± 0.006. Para T3 frente a B, $`\Delta F_1 \in [+0.454, +0.499]`$ y $`\Delta`$PR-AUC $`\in [+0.509, +0.555]`$.
 
 ### 4.7.3 Elliptic
 
@@ -153,7 +155,7 @@ La prueba contiene 16 670 transacciones etiquetadas, de las cuales 1 083 son il�
 
 **Tabla 4.8.** Desempeño en prueba por configuración (Elliptic, *Random Forest*).
 
-| Configuración | $F_1$ | PR-AUC | ROC-AUC |
+| Configuración | $`F_1`$ | PR-AUC | ROC-AUC |
 |---|---|---|---|
 | L Locales (93) | 0.751 ± 0.030 | 0.784 | 0.910 |
 | L + AF Agregadas de vecinos (165) | 0.761 ± 0.017 | 0.790 | 0.928 |
@@ -163,18 +165,18 @@ La prueba contiene 16 670 transacciones etiquetadas, de las cuales 1 083 son il�
 
 **Tabla 4.9.** *Bootstrap* pareado por semilla en Elliptic (IC 95 %).
 
-| Comparación | Semilla | $\Delta F_1$ | $\Delta$PR-AUC |
+| Comparación | Semilla | $`\Delta F_1`$ | $`\Delta`$PR-AUC |
 |---|---|---|---|
 | L + G frente a L | 42 / 43 / 44 | [+0.039, +0.063] / [−0.023, −0.005] / [+0.008, +0.027] | [−0.007, −0.002] / [−0.004, +0.001] / [−0.005, −0.001] |
 | L + AF frente a L | 42 / 43 / 44 | [+0.038, +0.062] / [−0.023, −0.001] / [−0.021, +0.004] | [+0.004, +0.011] / [+0.004, +0.011] / [+0.002, +0.008] |
 | L + AF + G frente a L | 42 / 43 / 44 | [+0.049, +0.075] / [−0.044, −0.020] / [+0.002, +0.027] | [+0.002, +0.009] / [+0.004, +0.010] / [+0.002, +0.009] |
 | L + AF + G frente a L + AF | 42 / 43 / 44 | [+0.005, +0.018] / [−0.027, −0.013] / [+0.015, +0.030] | [−0.003, +0.000] / [−0.002, +0.001] / [−0.001, +0.002] |
 
-El signo de $\Delta F_1$ cambia según la semilla en todas las comparaciones. **La réplica no cumple el criterio de forma robusta.** El $\Delta$PR-AUC de las variables agregadas frente a L es positivo en las tres semillas.
+El signo de $`\Delta F_1`$ cambia según la semilla en todas las comparaciones. **La réplica no cumple el criterio de forma robusta.** El $`\Delta`$PR-AUC de las variables agregadas frente a L es positivo en las tres semillas.
 
 ![Figura 4.5](../../results/figuras/elliptic_f1.png)
 
-**Figura 4.5.** $F_1$ en prueba por configuración en Elliptic (media ± desviación estándar).
+**Figura 4.5.** $`F_1`$ en prueba por configuración en Elliptic (media ± desviación estándar).
 
 ## 4.8 Contribución de cada tipo de variable (P3)
 
@@ -182,7 +184,7 @@ El signo de $\Delta F_1$ cambia según la semilla en todas las comparaciones. **
 
 **Tabla 4.10.** Ablación del modelo completo T3 en IBM (semilla 42).
 
-| Grupo retirado | HI-Small $F_1$ | HI-Small PR-AUC | LI-Small $F_1$ | LI-Small PR-AUC |
+| Grupo retirado | HI-Small $`F_1`$ | HI-Small PR-AUC | LI-Small $`F_1`$ | LI-Small PR-AUC |
 |---|---|---|---|---|
 | Ninguno (T3) | 0.607 | 0.555 | 0.270 | 0.227 |
 | Transaccional | 0.481 | 0.474 | 0.169 | 0.103 |
@@ -204,7 +206,7 @@ Para evaluar la hipótesis rival R1, los contadores se separaron en diez estruct
 
 **Tabla 4.11.** Contadores estructurales frente a temporales (IBM HI-Small, *Random Forest*, tres semillas; IC 95 % por *bootstrap* pareado con la semilla 42).
 
-| Configuración | $F_1$ | PR-AUC | $\Delta F_1$ frente a B | $\Delta$PR-AUC frente a B |
+| Configuración | $`F_1`$ | PR-AUC | $`\Delta F_1`$ frente a B | $`\Delta`$PR-AUC frente a B |
 |---|---|---|---|---|
 | B Transaccional (10) | 0.136 ± 0.007 | 0.062 | — | — |
 | B + estructurales (20) | 0.432 ± 0.002 | 0.409 | [+0.275, +0.326] | [+0.319, +0.374] |
@@ -212,7 +214,7 @@ Para evaluar la hipótesis rival R1, los contadores se separaron en diez estruct
 | B + estructurales + instantáneas (30) | 0.459 ± 0.009 | 0.445 | [+0.290, +0.345] | [+0.350, +0.405] |
 | T3 Completo (32) | 0.602 ± 0.008 | 0.563 | — | — |
 
-Frente a B + estructurales, el modelo completo obtiene $\Delta F_1 \in [+0.141, +0.186]$ y $\Delta$PR-AUC $\in [+0.126, +0.176]$. El $F_1$ de T3 en esta corrida (0.602) difiere del de la Tabla 4.6 (0.614) porque el orden de las columnas cambia el muestreo aleatorio de variables del *Random Forest*.
+Frente a B + estructurales, el modelo completo obtiene $`\Delta F_1 \in [+0.141, +0.186]`$ y $`\Delta`$PR-AUC $`\in [+0.126, +0.176]`$. El $`F_1`$ de T3 en esta corrida (0.602) difiere del de la Tabla 4.6 (0.614) porque el orden de las columnas cambia el muestreo aleatorio de variables del *Random Forest*.
 
 ### 4.8.3 Exhaustividad por tipo de patrón
 
@@ -240,11 +242,11 @@ El cruce con el archivo de patrones es exacto: las 3 209 transacciones listadas 
 
 ## 4.9 Inyección controlada (P4)
 
-La Tabla 4.13 reporta los nueve escenarios de la inyección, y la Figura 4.7 muestra cómo cambia el $F_1$ con los señuelos.
+La Tabla 4.13 reporta los nueve escenarios de la inyección, y la Figura 4.7 muestra cómo cambia el $`F_1`$ con los señuelos.
 
 **Tabla 4.13.** Desempeño con fraude estructurado inyectado en PaySim (*Random Forest*, semilla 42; IC por *bootstrap* con 500 remuestreos).
 
-| Prevalencia | Señuelos | Positivos en prueba | $F_1$ B1 | $F_1$ T3 | $\Delta F_1$ (IC 95 %) | Exhaustividad T3: cadena / ciclo / *fan-in* |
+| Prevalencia | Señuelos | Positivos en prueba | $`F_1`$ B1 | $`F_1`$ T3 | $`\Delta F_1`$ (IC 95 %) | Exhaustividad T3: cadena / ciclo / *fan-in* |
 |---|---|---|---|---|---|---|
 | 0.05 % | 0 | 76 | 0.001 | 0.910 | [+0.857, +0.952] | 1.00 / 0.76 / 1.00 |
 | 0.05 % | 1 | 96 | 0.000 | 0.786 | [+0.725, +0.843] | 0.92 / 0.64 / 0.98 |
@@ -256,11 +258,11 @@ La Tabla 4.13 reporta los nueve escenarios de la inyección, y la Figura 4.7 mue
 | 0.50 % | 1 | 911 | 0.038 | 0.866 | [+0.806, +0.848] | 0.86 / 0.67 / 0.96 |
 | 0.50 % | 5 | 870 | 0.073 | 0.620 | [+0.524, +0.569] | 0.74 / 0.70 / 0.90 |
 
-El $F_1$ de B1 es como máximo 0.073 en los nueve escenarios. El de T3 es 0.91–0.97 sin señuelos, 0.79–0.87 con un señuelo por patrón y 0.59–0.67 con cinco. Entre los tres patrones, la exhaustividad más baja corresponde a los ciclos en los nueve escenarios (0.64–0.76).
+El $`F_1`$ de B1 es como máximo 0.073 en los nueve escenarios. El de T3 es 0.91–0.97 sin señuelos, 0.79–0.87 con un señuelo por patrón y 0.59–0.67 con cinco. Entre los tres patrones, la exhaustividad más baja corresponde a los ciclos en los nueve escenarios (0.64–0.76).
 
 ![Figura 4.7](../../results/figuras/inyeccion_f1.png)
 
-**Figura 4.7.** $F_1$ en prueba frente al número de señuelos por patrón, para cada prevalencia.
+**Figura 4.7.** $`F_1`$ en prueba frente al número de señuelos por patrón, para cada prevalencia.
 
 ## 4.10 Resumen de resultados
 
@@ -268,7 +270,7 @@ La Tabla 4.14 resume el contraste en cada conjunto.
 
 **Tabla 4.14.** Resumen del contraste en cada conjunto.
 
-| Conjunto | Rol | $F_1$ referencia | $F_1$ con topología | ¿Criterio cumplido? |
+| Conjunto | Rol | $`F_1`$ referencia | $`F_1`$ con topología | ¿Criterio cumplido? |
 |---|---|---|---|---|
 | PaySim | Estudio 1 | 0.998 | 0.995 | No (diferencia negativa) |
 | IBM HI-Small | Contraste confirmatorio | 0.136 | 0.614 | Sí |

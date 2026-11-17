@@ -33,12 +33,12 @@ El planteamiento inicial de esta tesis asumía que las métricas topológicas me
 - **Lavado de dinero**: conjunto de transacciones cuyo fin es ocultar el origen ilícito de los fondos, típicamente mediante su dispersión, estratificación e integración en el sistema financiero. En IBM AML y Elliptic se etiquetan como transacciones ilícitas.
 - **Grafo de transacciones**: grafo dirigido cuyos nodos son cuentas (o transacciones, en Elliptic) y cuyas aristas representan flujos de dinero con dirección, monto y marca temporal.
 - **Variable topológica**: variable calculada a partir de la estructura del grafo y no de los atributos de una transacción aislada. En esta tesis se distinguen tres tipos: **estructurales locales** (grado, *fan-in*/*fan-out*, repetición del par, ciclos cortos), **temporales de red** (tiempo desde la última transacción de la cuenta) y **globales** (PageRank, intermediación, comunidades, componentes). La definición operacional está en 3.4.
-- **Variable causal**: variable que, para una transacción en el instante $t$, usa solo información de transacciones anteriores a $t$.
+- **Variable causal**: variable que, para una transacción en el instante $`t`$, usa solo información de transacciones anteriores a $`t`$.
 - **Modelo de referencia**: modelo que usa solo variables transaccionales y contra el cual se mide la mejora.
 
 ## 1.5 Hipótesis
 
-**H1.** En conjuntos de datos donde el fraude forma estructuras de red, un modelo que incorpora variables topológicas causales detecta las transacciones ilícitas mejor que un modelo que usa solo variables transaccionales, medido por $F_1$ y por el área bajo la curva precisión-exhaustividad (PR-AUC).
+**H1.** En conjuntos de datos donde el fraude forma estructuras de red, un modelo que incorpora variables topológicas causales detecta las transacciones ilícitas mejor que un modelo que usa solo variables transaccionales, medido por $`F_1`$ y por el área bajo la curva precisión-exhaustividad (PR-AUC).
 
 La operacionalización y el criterio de decisión se fijaron antes de los experimentos y se describen en 3.7. Las hipótesis rivales, es decir, explicaciones alternativas de una eventual mejora, se presentan en 2.6.
 
@@ -62,7 +62,7 @@ La operacionalización y el criterio de decisión se fijaron antes de los experi
 - Dos de los tres conjuntos son sintéticos: sus patrones de fraude son los que implementa el generador.
 - El grafo se analiza mediante contadores causales e instantáneas por bloques de tiempo, no como un grafo dinámico continuo.
 - La evaluación es en lote (*batch*), no en flujo continuo.
-- No se implementa homología persistente sobre filtraciones. La topología se estudia mediante métricas de grafos dirigidos (2.2); de la homología solo se usan los números de Betti $\beta_0$ y $\beta_1$ como descripción de los grafos (2.3).
+- No se implementa homología persistente sobre filtraciones. La topología se estudia mediante métricas de grafos dirigidos (2.2); de la homología solo se usan los números de Betti $`\beta_0`$ y $`\beta_1`$ como descripción de los grafos (2.3).
 
 ## 1.8 Organización del documento
 

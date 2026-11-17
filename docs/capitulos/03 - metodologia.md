@@ -88,10 +88,10 @@ Las variables `newbalanceOrig` y `newbalanceDest` de PaySim se excluyen porque r
 
 ### 3.4.3 Causalidad
 
-Todas las variables de PaySim e IBM son **causales** en el sentido de la Definición 2.5: para una transacción en el instante $t$ solo usan transacciones anteriores. Se implementan de dos formas.
+Todas las variables de PaySim e IBM son **causales** en el sentido de la Definición 2.5: para una transacción en el instante $`t`$ solo usan transacciones anteriores. Se implementan de dos formas.
 
-- **Contadores** (Definición 2.7): acumulados según el orden $\prec$ de la Definición 2.3, que excluyen la transacción actual. Las ventanas de *fan-in*/*fan-out* cuentan solo instantes estrictamente anteriores a $t$.
-- **Instantáneas** (Definición 2.4): se divide el tiempo en bloques de duración $b$ ($b$ = 24 h en PaySim y 6 h en IBM). A una transacción en el instante $t$ se le asignan las métricas de la instantánea $G_{<\tau(t)}$, donde $\tau(t) = b\lfloor t / b \rfloor$ es el inicio de su bloque. En PaySim se usa el multigrafo $G_{<\tau}$ y en IBM su versión simple $\bar{G}_{<\tau}$. Como $\tau(t) \le t$, estas variables son causales, con un rezago de a lo sumo $b$. Los nodos aún no vistos reciben valor 0.
+- **Contadores** (Definición 2.7): acumulados según el orden $`\prec`$ de la Definición 2.3, que excluyen la transacción actual. Las ventanas de *fan-in*/*fan-out* cuentan solo instantes estrictamente anteriores a $`t`$.
+- **Instantáneas** (Definición 2.4): se divide el tiempo en bloques de duración $`b`$ ($`b`$ = 24 h en PaySim y 6 h en IBM). A una transacción en el instante $`t`$ se le asignan las métricas de la instantánea $`G_{<\tau(t)}`$, donde $`\tau(t) = b\lfloor t / b \rfloor`$ es el inicio de su bloque. En PaySim se usa el multigrafo $`G_{<\tau}`$ y en IBM su versión simple $`\bar{G}_{<\tau}`$. Como $`\tau(t) \le t`$, estas variables son causales, con un rezago de a lo sumo $`b`$. Los nodos aún no vistos reciben valor 0.
 
 La intermediación se calcula de forma **exacta** en PaySim sobre las componentes que contienen nodos con entradas y salidas; es equivalente al cálculo global, porque solo esos nodos pueden tener intermediación positiva. En IBM y Elliptic se **restringe a caminos de longitud ≤ 4**. La pertenencia a ciclos se calcula en PaySim, pero vale cero en todos los casos, por lo que no entra al modelo.
 
@@ -108,12 +108,16 @@ En Elliptic, las métricas de grafo propias se calculan sobre el grafo de cada p
 
 ## 3.6 Métricas e inferencia
 
-- **Métrica principal**: $F_1$ en prueba (Definición 2.20) con el umbral $\theta^{*} = \arg\max_{\theta} F_1^{\text{val}}(\theta)$, elegido sobre los puntajes de validación del modelo ajustado sin ella.
+- **Métrica principal**: $`F_1`$ en prueba (Definición 2.20) con el umbral $`\theta^{*} = \arg\max_{\theta} F_1^{\text{val}}(\theta)`$, elegido sobre los puntajes de validación del modelo ajustado sin ella.
 - **Secundarias**: precisión, exhaustividad, PR-AUC y ROC-AUC (Definiciones 2.20 a 2.22). La PR-AUC no depende del umbral y es la comparación más robusta entre modelos (Saito y Rehmsmeier, 2015).
-- **Incertidumbre de muestreo: *bootstrap* pareado.** Sea $\mathcal{D} = \{(y_i, s^{A}_i, s^{B}_i)\}_{i=1}^{n}$ el conjunto de prueba, con los puntajes de dos modelos $A$ y $B$ para cada transacción, y sea $M$ una métrica ($F_1$ con umbrales fijos $\theta^{*}_A$ y $\theta^{*}_B$, o PR-AUC). Para $r = 1, \dots, R$ se extrae una muestra $\mathcal{D}^{*r}$ de $n$ índices con reemplazo y probabilidad uniforme, y se calcula
-$$\Delta^{*r} = M\big(B; \mathcal{D}^{*r}\big) - M\big(A; \mathcal{D}^{*r}\big).$$
-El intervalo de confianza del 95 % es el intervalo de percentiles $[\Delta^{*}_{(0.025)}, \Delta^{*}_{(0.975)}]$ (Efron, 1979; Efron y Tibshirani, 1993). Se usa $R = 1\,000$ (500 en la inyección). El remuestreo es **pareado** porque ambos modelos se evalúan sobre las mismas transacciones, lo que elimina la variabilidad debida a la composición de la muestra. Se reporta además $\hat{p} = R^{-1} \sum_r \mathbb{1}[\Delta^{*r} \le 0]$.
-- **Implementación.** Remuestrear con reemplazo equivale a ponderar cada transacción con un peso $c_i$, donde $(c_1, \dots, c_n) \sim \text{Multinomial}(n; 1/n, \dots, 1/n)$. $F_1$ y PR-AUC se calculan con esos pesos sobre un orden fijo de los puntajes, agrupando los empates como en la Definición 2.21. Se verificó numéricamente que coincide con scikit-learn (Pedregosa et al., 2011).
+- **Incertidumbre de muestreo: *bootstrap* pareado.** Sea $`\mathcal{D} = \{(y_i, s^{A}_i, s^{B}_i)\}_{i=1}^{n}`$ el conjunto de prueba, con los puntajes de dos modelos $`A`$ y $`B`$ para cada transacción, y sea $`M`$ una métrica ($`F_1`$ con umbrales fijos $`\theta^{*}_A`$ y $`\theta^{*}_B`$, o PR-AUC). Para $`r = 1, \dots, R`$ se extrae una muestra $`\mathcal{D}^{*r}`$ de $`n`$ índices con reemplazo y probabilidad uniforme, y se calcula
+
+```math
+\Delta^{*r} = M\big(B; \mathcal{D}^{*r}\big) - M\big(A; \mathcal{D}^{*r}\big).
+```
+
+El intervalo de confianza del 95 % es el intervalo de percentiles $`[\Delta^{*}_{(0.025)}, \Delta^{*}_{(0.975)}]`$ (Efron, 1979; Efron y Tibshirani, 1993). Se usa $`R = 1\,000`$ (500 en la inyección). El remuestreo es **pareado** porque ambos modelos se evalúan sobre las mismas transacciones, lo que elimina la variabilidad debida a la composición de la muestra. Se reporta además $`\hat{p} = R^{-1} \sum_r \mathbb{1}[\Delta^{*r} \le 0]`$.
+- **Implementación.** Remuestrear con reemplazo equivale a ponderar cada transacción con un peso $`c_i`$, donde $`(c_1, \dots, c_n) \sim \text{Multinomial}(n; 1/n, \dots, 1/n)`$. $`F_1`$ y PR-AUC se calculan con esos pesos sobre un orden fijo de los puntajes, agrupando los empates como en la Definición 2.21. Se verificó numéricamente que coincide con scikit-learn (Pedregosa et al., 2011).
 - **Incertidumbre de entrenamiento**: media y desviación estándar sobre las tres semillas. Si la desviación entre semillas es comparable a la diferencia entre modelos, como en Elliptic, el *bootstrap* se calcula para cada semilla (hipótesis rival R5).
 
 ## 3.7 Criterio de decisión y configuraciones
@@ -133,7 +137,7 @@ Las configuraciones del Estudio 1 se muestran en la Tabla 3.3.
 | T3 | B1 + grado + instantáneas | Modelo topológico completo |
 | T4 | Grado + instantáneas | Topología sin variables transaccionales |
 
-**Criterio.** H1 se apoya si $F_1(\text{T3}) \ge 0.80$ y el límite inferior del IC 95 % de $\Delta F_1 = F_1(\text{T3}) - F_1(\text{B1})$ es positivo. Además se realizó una ablación (T3 sin cada grupo). El umbral de 0.80 proviene del plan inicial de la tesis (bitácora, semana 2), donde se fijó como desempeño mínimo para considerar útil un sistema de detección. En el Estudio 2 se abandonó, porque un umbral absoluto de $F_1$ depende de la prevalencia y de la dificultad de cada conjunto, mientras que H1 afirma una **mejora relativa** frente al modelo de referencia.
+**Criterio.** H1 se apoya si $`F_1(\text{T3}) \ge 0.80`$ y el límite inferior del IC 95 % de $`\Delta F_1 = F_1(\text{T3}) - F_1(\text{B1})`$ es positivo. Además se realizó una ablación (T3 sin cada grupo). El umbral de 0.80 proviene del plan inicial de la tesis (bitácora, semana 2), donde se fijó como desempeño mínimo para considerar útil un sistema de detección. En el Estudio 2 se abandonó, porque un umbral absoluto de $`F_1`$ depende de la prevalencia y de la dificultad de cada conjunto, mientras que H1 afirma una **mejora relativa** frente al modelo de referencia.
 
 **Análisis post hoc.** Las configuraciones N0–N3 repiten B1 a T3 sin las cuatro variables que reconstruyen el atajo de saldos de PaySim (4.3): monto, saldo de origen, su razón y fondos insuficientes.
 
@@ -151,7 +155,7 @@ Las configuraciones del Estudio 2 se muestran en la Tabla 3.4. Son análogas a l
 | T3 | B + contadores + instantáneas | Modelo topológico completo |
 | T4 | Contadores + instantáneas | Topología sin variables transaccionales |
 
-**Criterio de H1 (confirmatorio).** En IBM HI-Small, con *Random Forest* y el protocolo de 3.3, **H1 se apoya si los límites inferiores de los IC 95 % de $\Delta F_1$ y de $\Delta$PR-AUC de T3 frente a B son ambos estrictamente positivos.** En caso contrario se mantiene H0.
+**Criterio de H1 (confirmatorio).** En IBM HI-Small, con *Random Forest* y el protocolo de 3.3, **H1 se apoya si los límites inferiores de los IC 95 % de $`\Delta F_1`$ y de $`\Delta`$PR-AUC de T3 frente a B son ambos estrictamente positivos.** En caso contrario se mantiene H0.
 
 **Réplicas.** IBM LI-Small (mismas configuraciones) y Elliptic (L, L + AF, L + G, L + AF + G, G), con el mismo criterio. Se reportan como evidencia de generalización, no como condición de H1.
 
@@ -195,8 +199,8 @@ La principal amenaza restante es que alguna variable topológica capture una reg
 Ninguna de estas desviaciones modifica el criterio de H1.
 
 - **Intermediación.** Se planificó aproximarla por muestreo. Se usó la restricción a caminos de longitud ≤ 4, que es determinista y viable en todas las instantáneas, porque el grafo de IBM tiene unas 648 000 aristas únicas.
-- ***Bootstrap* en Elliptic.** Se calculó para cada semilla, porque la desviación entre semillas del modelo local (0.030 en $F_1$) es comparable a las diferencias observadas. En IBM, esa desviación (≈ 0.007) es despreciable frente a la diferencia, por lo que se usó la semilla 42.
-- **Inyección, versión 2.** En la primera versión los patrones se iniciaban de forma uniforme en el tiempo. Como la actividad legítima de PaySim se concentra al inicio, la tasa de positivos en prueba era nueve veces la de entrenamiento y el modelo de referencia aprendía el tiempo ($F_1$ = 0.41 con 0.5 % de prevalencia). En la versión final el inicio se muestrea de la distribución temporal de las transacciones legítimas: la tasa de positivos queda en 0.50 % en entrenamiento y 0.56 % en prueba. Los resultados de la versión 1 se conservan en `results/injection_v1_inicio_uniforme/`.
+- ***Bootstrap* en Elliptic.** Se calculó para cada semilla, porque la desviación entre semillas del modelo local (0.030 en $`F_1`$) es comparable a las diferencias observadas. En IBM, esa desviación (≈ 0.007) es despreciable frente a la diferencia, por lo que se usó la semilla 42.
+- **Inyección, versión 2.** En la primera versión los patrones se iniciaban de forma uniforme en el tiempo. Como la actividad legítima de PaySim se concentra al inicio, la tasa de positivos en prueba era nueve veces la de entrenamiento y el modelo de referencia aprendía el tiempo ($`F_1`$ = 0.41 con 0.5 % de prevalencia). En la versión final el inicio se muestrea de la distribución temporal de las transacciones legítimas: la tasa de positivos queda en 0.50 % en entrenamiento y 0.56 % en prueba. Los resultados de la versión 1 se conservan en `results/injection_v1_inicio_uniforme/`.
 - **Exhaustividad por patrón en LI-Small.** No se calculó, porque el archivo de patrones no estaba disponible en la corrida principal.
 - **Separación estructural/temporal.** Se añadió como análisis post hoc (3.7.2).
 

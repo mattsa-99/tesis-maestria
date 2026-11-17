@@ -4,7 +4,7 @@
 
 | Término | Definición | Término en inglés |
 |---|---|---|
-| Arista inversa previa | Indicador de que la transacción $v \to u$ ocurrió antes que $u \to v$ (ciclo de longitud 2) | *reverse edge* |
+| Arista inversa previa | Indicador de que la transacción $`v \to u`$ ocurrió antes que $`u \to v`$ (ciclo de longitud 2) | *reverse edge* |
 | *Bootstrap* pareado | Remuestreo con reemplazo de las transacciones de prueba, evaluando dos modelos sobre las mismas muestras para estimar la distribución de su diferencia | *paired bootstrap* |
 | Componente fuerte | Conjunto maximal de nodos mutuamente alcanzables respetando la dirección | *strongly connected component* |
 | Conjunto de datos | Colección de transacciones con sus etiquetas | *dataset* |
@@ -19,7 +19,7 @@
 | Precisión | Proporción de alertas que son positivos reales | *precision* |
 | Señuelo | Estructura inyectada idéntica a un patrón fraudulento, pero etiquetada como legítima | *decoy* |
 | Variable | Atributo de entrada del modelo | *feature* |
-| Variable causal | Variable que, para una transacción en $t$, usa solo información anterior a $t$ | — |
+| Variable causal | Variable que, para una transacción en $`t`$, usa solo información anterior a $`t`$ | — |
 
 ## Anexo B. Catálogo de variables
 
@@ -28,9 +28,9 @@
 | Variable | Grupo | Definición |
 |---|---|---|
 | `type_enc` | Base | Tipo de transacción codificado |
-| `amount_log` | Base | $\log(1 + \text{monto})$ |
-| `orig_balance_log` | Base | $\log(1 + \text{saldo previo del origen})$ |
-| `dest_balance_log` | Base | $\log(1 + \text{saldo previo del destino})$ |
+| `amount_log` | Base | $`\log(1 + \text{monto})`$ |
+| `orig_balance_log` | Base | $`\log(1 + \text{saldo previo del origen})`$ |
+| `dest_balance_log` | Base | $`\log(1 + \text{saldo previo del destino})`$ |
 | `dest_was_empty` | Base | Saldo previo del destino igual a cero |
 | `amount_to_orig_ratio` | Base | Monto / (saldo previo del origen + 1), truncado en 1 000 |
 | `insufficient_funds` | Base | Monto mayor que el saldo previo del origen |
@@ -38,7 +38,7 @@
 | `dest_is_merchant` | Comercio | El destino es un comercio (nombre con prefijo "M") |
 | `orig_out_deg_prev`, `orig_in_deg_prev` | Grado (estructural) | Transacciones previas enviadas / recibidas por el origen |
 | `dest_out_deg_prev`, `dest_in_deg_prev` | Grado (estructural) | Transacciones previas enviadas / recibidas por el destino |
-| `dest_in_amt_prev` | Grado (estructural) | $\log(1 + \text{suma de montos recibidos previamente por el destino})$ |
+| `dest_in_amt_prev` | Grado (estructural) | $`\log(1 + \text{suma de montos recibidos previamente por el destino})`$ |
 | `dest_last_gap` | Grado (temporal) | Pasos desde la última transacción recibida por el destino (−1 si no hay) |
 | `orig_pagerank`, `dest_pagerank` | Instantánea (global) | PageRank en el grafo del día anterior |
 | `orig_wcc_size`, `dest_wcc_size` | Instantánea (global) | Tamaño de la componente débil |
@@ -50,7 +50,7 @@
 
 | Variable | Grupo | Definición |
 |---|---|---|
-| `amt_paid_log`, `amt_rec_log` | Transaccional | $\log(1 + \text{monto pagado / recibido})$ |
+| `amt_paid_log`, `amt_rec_log` | Transaccional | $`\log(1 + \text{monto pagado / recibido})`$ |
 | `cur_paid`, `cur_rec` | Transaccional | Moneda de pago / recepción |
 | `same_currency` | Transaccional | Monedas de pago y recepción iguales |
 | `fmt` | Transaccional | Formato de pago (ACH, cheque, tarjeta, efectivo, transferencia, Bitcoin, reinversión) |
@@ -67,7 +67,7 @@
 | `src_pagerank`, `dst_pagerank` | Instantánea (global) | PageRank en el grafo del bloque de 6 h anterior |
 | `src_scc_size`, `dst_scc_size` | Instantánea (global) | Tamaño de la componente fuerte |
 | `same_scc` | Instantánea (global) | Origen y destino en la misma componente fuerte de más de un nodo |
-| `closes_3cycle` | Instantánea (estructural) | Existe $w$ con $v \to w \to u$ (la transacción cierra un ciclo de longitud 3) |
+| `closes_3cycle` | Instantánea (estructural) | Existe $`w`$ con $`v \to w \to u`$ (la transacción cierra un ciclo de longitud 3) |
 | `src_comm_size`, `dst_comm_size` | Instantánea (global) | Tamaño de la comunidad de Louvain |
 | `src_btw`, `dst_btw` | Instantánea (global) | Intermediación restringida a caminos de longitud ≤ 4 |
 

@@ -6,9 +6,9 @@ Esta tesis partió de una hipótesis general: que las métricas topológicas de 
 
 ## 6.2 Respuesta a las preguntas de investigación
 
-**P1. ¿Mejoran las variables topológicas la detección en un conjunto con lavado estructurado?** Sí. En IBM AML HI-Small, el modelo con variables topológicas causales supera ampliamente al transaccional en $F_1$ y en PR-AUC. Los intervalos de confianza de ambas diferencias excluyen el cero, de modo que, según el criterio definido de antemano, los resultados apoyan H1.
+**P1. ¿Mejoran las variables topológicas la detección en un conjunto con lavado estructurado?** Sí. En IBM AML HI-Small, el modelo con variables topológicas causales supera ampliamente al transaccional en $`F_1`$ y en PR-AUC. Los intervalos de confianza de ambas diferencias excluyen el cero, de modo que, según el criterio definido de antemano, los resultados apoyan H1.
 
-**P2. ¿Se replica la mejora?** En IBM AML LI-Small, sí, y también en HI-Small sin el recorte temporal. En Elliptic, no de forma robusta: la información de vecinos mejora levemente la PR-AUC, pero la diferencia en $F_1$ depende de la semilla.
+**P2. ¿Se replica la mejora?** En IBM AML LI-Small, sí, y también en HI-Small sin el recorte temporal. En Elliptic, no de forma robusta: la información de vecinos mejora levemente la PR-AUC, pero la diferencia en $`F_1`$ depende de la semilla.
 
 **P3. ¿Qué tipo de información de red explica la mejora?** Los contadores locales actualizados con cada transacción, y no las métricas globales del grafo (PageRank, intermediación, comunidades). Dentro de esos contadores, la información estructural y la temporal aportan, cada una por separado, una mejora grande y de magnitud similar, y son complementarias. La estructura sola basta para cumplir el criterio de H1, pero el mejor modelo combina ambas. La variable estructural más informativa es la repetición del par de cuentas: el lavado usa contrapartes nuevas.
 
