@@ -44,7 +44,7 @@ tesis-maestria/
 ├── docs/
 │   ├── capitulos/      # Tesis (Markdown) e imágenes
 │   ├── bitacora/       # Bitácora semanal
-│   └── herramientas/   # Generador de la lista de referencias
+│   └── herramientas/   # Figuras del Cap. 2, referencias y formato de fórmulas para GitHub
 ├── experiments/        # Variables causales, experimentos y figuras
 ├── tests/              # Pruebas de causalidad de las variables
 ├── results/            # Métricas, intervalos de confianza y figuras
@@ -76,8 +76,11 @@ python -m experiments.run_ibm HI-Small        # contraste confirmatorio
 python -m experiments.run_ibm_struct_vs_time  # estructurales frente a temporales (post hoc)
 python -m experiments.run_elliptic            # réplica en Elliptic
 python -m experiments.injection               # inyección controlada
-python experiments/make_figures.py            # figuras
+python experiments/make_figures.py            # figuras de resultados
+python docs/herramientas/figuras_marco.py     # figuras y valores del marco teórico (Cap. 2)
 ```
+
+Si se editan fórmulas, `python docs/herramientas/compatibilizar_github.py --aplicar` las pasa a la sintaxis que GitHub renderiza (`--revertir` vuelve a `$...$`).
 
 ## Pendiente
 

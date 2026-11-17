@@ -115,6 +115,9 @@ Los conjuntos de datos no se incluyen en el repositorio por su tamaño (≈ 2.2 
 | `experiments/run_elliptic.py` | Réplica en Elliptic |
 | `experiments/injection.py` | Inyección controlada (3.7.3) |
 | `tests/test_features.py`, `tests/test_ibm_features.py` | Pruebas de causalidad (3.4.3) |
+| `docs/herramientas/figuras_marco.py` | Red de ejemplo, valores y figuras del Capítulo 2 |
+| `docs/herramientas/generar_referencias.py` | Lista de referencias en APA 7 a partir de `bibliografia.bib` |
+| `docs/herramientas/compatibilizar_github.py` | Conversión de fórmulas a la sintaxis que GitHub renderiza |
 
 ### C.4 Correspondencia entre scripts y resultados
 
