@@ -1,0 +1,36 @@
+{
+  "N0": {
+    "TRANSFER": {
+      "n": 920,
+      "detectados": 920
+    },
+    "CASH_OUT": {
+      "n": 920,
+      "detectados": 0
+    },
+    "falsos_positivos_por_tipo": {
+      "CASH_IN": 0,
+      "CASH_OUT": 0,
+      "DEBIT": 0,
+      "PAYMENT": 0,
+      "TRANSFER": 1799
+    }
+  },
+  "N3": {
+    "TRANSFER": {
+      "n": 920,
+      "detectados": 919
+    },
+    "CASH_OUT": {
+      "n": 920,
+      "detectados": 0
+    },
+    "falsos_positivos_por_tipo": {
+      "CASH_IN": 0,
+      "CASH_OUT": 0,
+      "DEBIT": 0,
+      "PAYMENT": 0,
+      "TRANSFER": 1154
+    }
+  }
+}

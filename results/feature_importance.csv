@@ -1,0 +1,84 @@
+config,feature,importance
+B0 baseline v0.1,type_enc,0.1395563693863548
+B0 baseline v0.1,amount_log,0.11714664506687329
+B0 baseline v0.1,orig_balance_log,0.1066459880742472
+B0 baseline v0.1,dest_balance_log,0.018478006706666474
+B0 baseline v0.1,dest_was_empty,0.011052479843520585
+B0 baseline v0.1,amount_to_orig_ratio,0.4303031163593851
+B0 baseline v0.1,insufficient_funds,0.1544962908089841
+B0 baseline v0.1,step,0.02232110375396832
+B1 baseline + merchant,type_enc,0.11855054532964332
+B1 baseline + merchant,amount_log,0.08303188976272466
+B1 baseline + merchant,orig_balance_log,0.10103940980346862
+B1 baseline + merchant,dest_balance_log,0.013063911588750901
+B1 baseline + merchant,dest_was_empty,0.006495340934731921
+B1 baseline + merchant,amount_to_orig_ratio,0.3863697464584971
+B1 baseline + merchant,insufficient_funds,0.2125711708741275
+B1 baseline + merchant,step,0.005687914391346613
+B1 baseline + merchant,dest_is_merchant,0.0731900708567093
+T1 B1 + degree,type_enc,0.12266951797478047
+T1 B1 + degree,amount_log,0.10920041734500571
+T1 B1 + degree,orig_balance_log,0.09600488570228526
+T1 B1 + degree,dest_balance_log,0.01616397840776273
+T1 B1 + degree,dest_was_empty,0.010602164110902753
+T1 B1 + degree,amount_to_orig_ratio,0.3252373244352198
+T1 B1 + degree,insufficient_funds,0.18413382029470193
+T1 B1 + degree,step,0.02181210346426759
+T1 B1 + degree,dest_is_merchant,0.08521297378105049
+T1 B1 + degree,dest_in_deg_prev,0.007494542607274421
+T1 B1 + degree,dest_out_deg_prev,1.5226057447148543e-05
+T1 B1 + degree,orig_out_deg_prev,1.0973392495556062e-05
+T1 B1 + degree,orig_in_deg_prev,7.890401614843018e-07
+T1 B1 + degree,dest_in_amt_prev,0.01121622115202581
+T1 B1 + degree,dest_last_gap,0.010225062234618727
+T2 B1 + snapshot,type_enc,0.11066298537898055
+T2 B1 + snapshot,amount_log,0.08170416737711586
+T2 B1 + snapshot,orig_balance_log,0.07480130868475889
+T2 B1 + snapshot,dest_balance_log,0.017289449257742843
+T2 B1 + snapshot,dest_was_empty,0.007733274821927908
+T2 B1 + snapshot,amount_to_orig_ratio,0.407950988069836
+T2 B1 + snapshot,insufficient_funds,0.18839796562253222
+T2 B1 + snapshot,step,0.01734136291439057
+T2 B1 + snapshot,dest_is_merchant,0.0859309946282481
+T2 B1 + snapshot,dest_pagerank,4.681441307611291e-05
+T2 B1 + snapshot,orig_pagerank,2.4378333737419335e-05
+T2 B1 + snapshot,dest_wcc_size,0.0029817901725137895
+T2 B1 + snapshot,orig_wcc_size,0.00034164707823003876
+T2 B1 + snapshot,dest_betweenness,5.642262670698402e-06
+T2 B1 + snapshot,orig_betweenness,0.0
+T2 B1 + snapshot,dest_comm_size,0.004787230984239058
+T3 B1 + degree + snapshot (completo),type_enc,0.11213407508599871
+T3 B1 + degree + snapshot (completo),amount_log,0.09123215917405733
+T3 B1 + degree + snapshot (completo),orig_balance_log,0.10040008920400095
+T3 B1 + degree + snapshot (completo),dest_balance_log,0.01901969721138813
+T3 B1 + degree + snapshot (completo),dest_was_empty,0.011961030121327123
+T3 B1 + degree + snapshot (completo),amount_to_orig_ratio,0.3791816633111693
+T3 B1 + degree + snapshot (completo),insufficient_funds,0.15659341830240564
+T3 B1 + degree + snapshot (completo),step,0.01828686579291919
+T3 B1 + degree + snapshot (completo),dest_is_merchant,0.07806925850932415
+T3 B1 + degree + snapshot (completo),dest_in_deg_prev,0.005852317839780975
+T3 B1 + degree + snapshot (completo),dest_out_deg_prev,1.0980218526913013e-05
+T3 B1 + degree + snapshot (completo),orig_out_deg_prev,1.563947358950302e-05
+T3 B1 + degree + snapshot (completo),orig_in_deg_prev,1.6624366252830465e-07
+T3 B1 + degree + snapshot (completo),dest_in_amt_prev,0.011223760739298962
+T3 B1 + degree + snapshot (completo),dest_last_gap,0.010075110460031135
+T3 B1 + degree + snapshot (completo),dest_pagerank,3.5448927418870274e-05
+T3 B1 + degree + snapshot (completo),orig_pagerank,3.532677637084218e-05
+T3 B1 + degree + snapshot (completo),dest_wcc_size,0.0020479148454057893
+T3 B1 + degree + snapshot (completo),orig_wcc_size,0.000780696662826693
+T3 B1 + degree + snapshot (completo),dest_betweenness,3.326922067736675e-06
+T3 B1 + degree + snapshot (completo),orig_betweenness,0.0
+T3 B1 + degree + snapshot (completo),dest_comm_size,0.003041054178429622
+T4 solo topológicas (sin base),dest_in_deg_prev,0.11779023884722034
+T4 solo topológicas (sin base),dest_out_deg_prev,0.0008538106910698686
+T4 solo topológicas (sin base),orig_out_deg_prev,0.0013821100774237202
+T4 solo topológicas (sin base),orig_in_deg_prev,0.00011271646426384022
+T4 solo topológicas (sin base),dest_in_amt_prev,0.36332894357646517
+T4 solo topológicas (sin base),dest_last_gap,0.3477394805260574
+T4 solo topológicas (sin base),dest_pagerank,0.000804151694159101
+T4 solo topológicas (sin base),orig_pagerank,1.3403319247318248e-05
+T4 solo topológicas (sin base),dest_wcc_size,0.07331222640477972
+T4 solo topológicas (sin base),orig_wcc_size,0.015450657927041787
+T4 solo topológicas (sin base),dest_betweenness,0.0004008804913453882
+T4 solo topológicas (sin base),orig_betweenness,0.0
+T4 solo topológicas (sin base),dest_comm_size,0.07881137998092642

@@ -1,0 +1,19 @@
+config,pattern,n,recall
+B transaccional,(sin patrón),459,0.006535947712418301
+B transaccional,BIPARTITE,52,0.17307692307692307
+B transaccional,CYCLE,65,0.23076923076923078
+B transaccional,FAN-IN,71,0.2535211267605634
+B transaccional,FAN-OUT,74,0.28378378378378377
+B transaccional,GATHER-SCATTER,147,0.1292517006802721
+B transaccional,RANDOM,45,0.13333333333333333
+B transaccional,SCATTER-GATHER,123,0.2032520325203252
+B transaccional,STACK,107,0.205607476635514
+T3 B + contadores + instantaneas,(sin patrón),459,0.010893246187363835
+T3 B + contadores + instantaneas,BIPARTITE,52,0.8461538461538461
+T3 B + contadores + instantaneas,CYCLE,65,0.8461538461538461
+T3 B + contadores + instantaneas,FAN-IN,71,0.7605633802816901
+T3 B + contadores + instantaneas,FAN-OUT,74,0.9324324324324325
+T3 B + contadores + instantaneas,GATHER-SCATTER,147,0.8775510204081632
+T3 B + contadores + instantaneas,RANDOM,45,0.7777777777777778
+T3 B + contadores + instantaneas,SCATTER-GATHER,123,0.8455284552845529
+T3 B + contadores + instantaneas,STACK,107,0.8037383177570093

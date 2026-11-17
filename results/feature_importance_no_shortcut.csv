@@ -1,0 +1,47 @@
+config,feature,importance
+N0 sin atajo,type_enc,0.2818849901525329
+N0 sin atajo,dest_balance_log,0.23509144103621216
+N0 sin atajo,dest_was_empty,0.06451582164342282
+N0 sin atajo,step,0.2812671574404832
+N0 sin atajo,dest_is_merchant,0.13724058972734898
+N1 sin atajo + degree,type_enc,0.24884964098358658
+N1 sin atajo + degree,dest_balance_log,0.11063689354905881
+N1 sin atajo + degree,dest_was_empty,0.03690686953887151
+N1 sin atajo + degree,step,0.18861954603600953
+N1 sin atajo + degree,dest_is_merchant,0.19206044489494586
+N1 sin atajo + degree,dest_in_deg_prev,0.044803723397107455
+N1 sin atajo + degree,dest_out_deg_prev,0.0001868738905620971
+N1 sin atajo + degree,orig_out_deg_prev,0.0003792669764810752
+N1 sin atajo + degree,orig_in_deg_prev,9.78952789408666e-06
+N1 sin atajo + degree,dest_in_amt_prev,0.09469498678620017
+N1 sin atajo + degree,dest_last_gap,0.08285196441928289
+N2 sin atajo + snapshot,type_enc,0.32893550627023765
+N2 sin atajo + snapshot,dest_balance_log,0.1446666354353496
+N2 sin atajo + snapshot,dest_was_empty,0.04983653392111278
+N2 sin atajo + snapshot,step,0.21238154290127134
+N2 sin atajo + snapshot,dest_is_merchant,0.18758537180958243
+N2 sin atajo + snapshot,dest_pagerank,0.0007391576956184434
+N2 sin atajo + snapshot,orig_pagerank,0.0004149824720191413
+N2 sin atajo + snapshot,dest_wcc_size,0.03747945910179185
+N2 sin atajo + snapshot,orig_wcc_size,0.0029137026411845974
+N2 sin atajo + snapshot,dest_betweenness,0.00018549915210336134
+N2 sin atajo + snapshot,orig_betweenness,0.0
+N2 sin atajo + snapshot,dest_comm_size,0.0348616085997287
+N3 sin atajo + degree + snapshot,type_enc,0.3043693088235059
+N3 sin atajo + degree + snapshot,dest_balance_log,0.09422215151489494
+N3 sin atajo + degree + snapshot,dest_was_empty,0.03145201029520136
+N3 sin atajo + degree + snapshot,step,0.1648806133550621
+N3 sin atajo + degree + snapshot,dest_is_merchant,0.15148514996567422
+N3 sin atajo + degree + snapshot,dest_in_deg_prev,0.04361091880137747
+N3 sin atajo + degree + snapshot,dest_out_deg_prev,0.00014225014469619927
+N3 sin atajo + degree + snapshot,orig_out_deg_prev,0.00024030982148041838
+N3 sin atajo + degree + snapshot,orig_in_deg_prev,4.1855542402633055e-06
+N3 sin atajo + degree + snapshot,dest_in_amt_prev,0.08098392506621649
+N3 sin atajo + degree + snapshot,dest_last_gap,0.08061735729358986
+N3 sin atajo + degree + snapshot,dest_pagerank,0.00046179808706604613
+N3 sin atajo + degree + snapshot,orig_pagerank,0.000301069519217226
+N3 sin atajo + degree + snapshot,dest_wcc_size,0.02266568893870456
+N3 sin atajo + degree + snapshot,orig_wcc_size,0.0020695639030324678
+N3 sin atajo + degree + snapshot,dest_betweenness,5.346565614660115e-05
+N3 sin atajo + degree + snapshot,orig_betweenness,0.0
+N3 sin atajo + degree + snapshot,dest_comm_size,0.022440233259893815

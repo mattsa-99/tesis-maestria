@@ -1,0 +1,107 @@
+config,feature,importance
+B transaccional,amt_paid_log,0.18853153127613775
+B transaccional,amt_rec_log,0.18953016898188635
+B transaccional,cur_paid,0.03133169428591092
+B transaccional,cur_rec,0.032516068204509946
+B transaccional,same_currency,0.004754504640068411
+B transaccional,fmt,0.34747488526274467
+B transaccional,same_bank,0.0140724273716976
+B transaccional,self_loop,0.02835805302432657
+B transaccional,hour,0.1050754151501044
+B transaccional,weekday,0.058355251802613334
+T1 B + contadores,amt_paid_log,0.04115751626880468
+T1 B + contadores,amt_rec_log,0.04748513833687453
+T1 B + contadores,cur_paid,0.007330266469921493
+T1 B + contadores,cur_rec,0.007056975399502645
+T1 B + contadores,same_currency,0.0019560936205983226
+T1 B + contadores,fmt,0.24416364316619954
+T1 B + contadores,same_bank,0.00656827127420475
+T1 B + contadores,self_loop,0.022555375223535158
+T1 B + contadores,hour,0.020861854241503764
+T1 B + contadores,weekday,0.013000052471416118
+T1 B + contadores,src_out_prev,0.07479619231972807
+T1 B + contadores,src_in_prev,0.03801324539398063
+T1 B + contadores,dst_in_prev,0.02241888547977723
+T1 B + contadores,dst_out_prev,0.013658050694062753
+T1 B + contadores,src_out_amt_prev,0.0593553936859713
+T1 B + contadores,dst_in_amt_prev,0.03501636011999775
+T1 B + contadores,src_fanout_24h,0.0834084611655169
+T1 B + contadores,dst_fanin_24h,0.013975383613496279
+T1 B + contadores,src_gap,0.06773782290403801
+T1 B + contadores,dst_gap,0.03641881884647019
+T1 B + contadores,pair_prev,0.14145543423303464
+T1 B + contadores,reverse_edge_prev,0.0016107650713652532
+T2 B + instantaneas,amt_paid_log,0.09261023192548284
+T2 B + instantaneas,amt_rec_log,0.0916268566652902
+T2 B + instantaneas,cur_paid,0.01840268655057708
+T2 B + instantaneas,cur_rec,0.017266521990978483
+T2 B + instantaneas,same_currency,0.0043703260006075105
+T2 B + instantaneas,fmt,0.33899789273145414
+T2 B + instantaneas,same_bank,0.012525959871437127
+T2 B + instantaneas,self_loop,0.024452074835953175
+T2 B + instantaneas,hour,0.042597550878782274
+T2 B + instantaneas,weekday,0.02160700516162547
+T2 B + instantaneas,src_pagerank,0.07450501495021936
+T2 B + instantaneas,dst_pagerank,0.006214518652520246
+T2 B + instantaneas,src_scc_size,0.004028085664442618
+T2 B + instantaneas,dst_scc_size,0.004134726132435328
+T2 B + instantaneas,same_scc,0.0002697261867891476
+T2 B + instantaneas,closes_3cycle,1.7150429685222987e-05
+T2 B + instantaneas,src_comm_size,0.04263902047703616
+T2 B + instantaneas,dst_comm_size,0.04382473350985127
+T2 B + instantaneas,src_btw,0.1317774512655684
+T2 B + instantaneas,dst_btw,0.028132466119263913
+T3 B + contadores + instantaneas,amt_paid_log,0.03923886603209753
+T3 B + contadores + instantaneas,amt_rec_log,0.03994306175772821
+T3 B + contadores + instantaneas,cur_paid,0.005776640321918407
+T3 B + contadores + instantaneas,cur_rec,0.00639661019952945
+T3 B + contadores + instantaneas,same_currency,0.0020486773400903995
+T3 B + contadores + instantaneas,fmt,0.23273852402494238
+T3 B + contadores + instantaneas,same_bank,0.011479402553489377
+T3 B + contadores + instantaneas,self_loop,0.018483209200131884
+T3 B + contadores + instantaneas,hour,0.017553543251422134
+T3 B + contadores + instantaneas,weekday,0.010460681902131086
+T3 B + contadores + instantaneas,src_out_prev,0.06441226384579447
+T3 B + contadores + instantaneas,src_in_prev,0.02534782415408638
+T3 B + contadores + instantaneas,dst_in_prev,0.01955499598528057
+T3 B + contadores + instantaneas,dst_out_prev,0.010753578364523293
+T3 B + contadores + instantaneas,src_out_amt_prev,0.05433186811819426
+T3 B + contadores + instantaneas,dst_in_amt_prev,0.028883301169332323
+T3 B + contadores + instantaneas,src_fanout_24h,0.06816963329630601
+T3 B + contadores + instantaneas,dst_fanin_24h,0.012205047198087779
+T3 B + contadores + instantaneas,src_gap,0.0637350955239908
+T3 B + contadores + instantaneas,dst_gap,0.03545067943595139
+T3 B + contadores + instantaneas,pair_prev,0.1260210586774046
+T3 B + contadores + instantaneas,reverse_edge_prev,0.0013653310959861507
+T3 B + contadores + instantaneas,src_pagerank,0.01584524093667827
+T3 B + contadores + instantaneas,dst_pagerank,0.0037125287021244017
+T3 B + contadores + instantaneas,src_scc_size,0.0034910719450868184
+T3 B + contadores + instantaneas,dst_scc_size,0.0033418526629222746
+T3 B + contadores + instantaneas,same_scc,0.00021674776923971003
+T3 B + contadores + instantaneas,closes_3cycle,3.3193447788706624e-06
+T3 B + contadores + instantaneas,src_comm_size,0.014883743221128566
+T3 B + contadores + instantaneas,dst_comm_size,0.016822767235374413
+T3 B + contadores + instantaneas,src_btw,0.037059671836666835
+T3 B + contadores + instantaneas,dst_btw,0.010273162897580883
+T4 solo topologicas,src_out_prev,0.07314878757895417
+T4 solo topologicas,src_in_prev,0.04086466341293898
+T4 solo topologicas,dst_in_prev,0.04847527622984931
+T4 solo topologicas,dst_out_prev,0.025146368885951415
+T4 solo topologicas,src_out_amt_prev,0.06353412496489605
+T4 solo topologicas,dst_in_amt_prev,0.05673740727400198
+T4 solo topologicas,src_fanout_24h,0.08028596514963578
+T4 solo topologicas,dst_fanin_24h,0.02388511576197328
+T4 solo topologicas,src_gap,0.09960146806075948
+T4 solo topologicas,dst_gap,0.07622787175064394
+T4 solo topologicas,pair_prev,0.22287772959745064
+T4 solo topologicas,reverse_edge_prev,0.002078113896211992
+T4 solo topologicas,src_pagerank,0.02535087422113649
+T4 solo topologicas,dst_pagerank,0.006363054253524131
+T4 solo topologicas,src_scc_size,0.006808530639880632
+T4 solo topologicas,dst_scc_size,0.006152857761910543
+T4 solo topologicas,same_scc,0.0009240565771248368
+T4 solo topologicas,closes_3cycle,2.717580610609441e-06
+T4 solo topologicas,src_comm_size,0.038380878502723946
+T4 solo topologicas,dst_comm_size,0.03756859105506189
+T4 solo topologicas,src_btw,0.04504271740815343
+T4 solo topologicas,dst_btw,0.020542829436606496
